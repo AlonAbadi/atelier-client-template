@@ -6,6 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect, useTransition } from "react";
 import { Menu, X } from "lucide-react";
 import { createBrowserClient } from "@/lib/supabase/browser";
+import { CLIENT } from "@/lib/client";
 
 const ITEMS_GROUP1 = [
   { label: "אודות",  href: "/about" },
@@ -163,7 +164,7 @@ export function MobileNav({ userInitial = null }: MobileNavProps) {
 
         {/* FAR RIGHT — text + bee logo */}
         <Link href="/" style={{ display: "flex", alignItems: "center", gap: 8, textDecoration: "none", flexShrink: 0 }}>
-          <span style={{ fontSize: 17, fontWeight: 700, color: "#EDE9E1", fontFamily: "var(--font-assistant), Assistant, sans-serif" }}>הדר דנן</span>
+          <span style={{ fontSize: 17, fontWeight: 700, color: "#EDE9E1", fontFamily: "var(--font-assistant), Assistant, sans-serif" }}>{CLIENT.name}</span>
           <Image src="/beegood_logo.png" alt="Bee Good" width={38} height={30} />
         </Link>
       </nav>

@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import Image from "next/image";
 import { parseVariant, AB_CONTENT } from "@/lib/ab";
 import { createServerClient } from "@/lib/supabase/server";
+import { CLIENT } from "@/lib/client";
 import { PageTracker } from "@/components/landing/PageTracker";
 import { CarouselWithDots } from "@/components/landing/CarouselWithDots";
 import { PhilosophySection } from "@/components/landing/PhilosophySection";
@@ -89,8 +90,8 @@ export default async function LandingPage() {
             {/* ── MOBILE: full-bleed overlay, thumb-zone optimized ── */}
             <div className="md:hidden" style={{ position: "relative", height: "93svh" }}>
               <Image
-                src="/hadar1.jpg"
-                alt="הדר דנן"
+                src={CLIENT.hero.image}
+                alt={CLIENT.hero.image_alt}
                 fill
                 priority
                 sizes="100vw"

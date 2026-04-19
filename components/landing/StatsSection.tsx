@@ -1,30 +1,16 @@
 "use client";
 
 import { Fragment, useEffect, useRef, useState } from "react";
+import { CLIENT } from "@/lib/client";
 
 const STATS = [
-  { value: 3500,  label: "לקוחות" },
-  { value: 50000, label: "תכנים"  },
-  { value: 80,    label: "תחומים" },
+  { display: CLIENT.social_proof.stat1.number, label: CLIENT.social_proof.stat1.label },
+  { display: CLIENT.social_proof.stat2.number, label: CLIENT.social_proof.stat2.label },
+  { display: CLIENT.social_proof.stat3.number, label: CLIENT.social_proof.stat3.label },
 ] as const;
-
-function easeQuarticOut(t: number): number {
-  return 1 - Math.pow(1 - t, 4);
-}
-
-function formatNum(n: number): string {
-  if (n >= 1000) {
-    const thousands = Math.floor(n / 1000);
-    const remainder = String(Math.floor(n % 1000)).padStart(3, "0");
-    return `${thousands},${remainder}`;
-  }
-  return String(n);
-}
 
 export function StatsSection() {
   const ref     = useRef<HTMLElement>(null);
-  const started = useRef(false);
-  const [counts, setCounts]   = useState<[number, number, number]>([0, 0, 0]);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -33,26 +19,9 @@ export function StatsSection() {
 
     const obs = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !started.current) {
-          started.current = true;
-          obs.disconnect();
+        if (entry.isIntersecting) {
           setVisible(true);
-
-          const duration = 2200;
-          const t0 = performance.now();
-          const targets = STATS.map((s) => s.value);
-
-          function tick(now: number) {
-            const t = Math.min((now - t0) / duration, 1);
-            const e = easeQuarticOut(t);
-            setCounts([
-              Math.round(targets[0] * e),
-              Math.round(targets[1] * e),
-              Math.round(targets[2] * e),
-            ]);
-            if (t < 1) requestAnimationFrame(tick);
-          }
-          requestAnimationFrame(tick);
+          obs.disconnect();
         }
       },
       { threshold: 0.3 }
@@ -112,27 +81,16 @@ export function StatsSection() {
                 transition: `opacity 0.65s ease ${i * 0.18}s, transform 0.65s ease ${i * 0.18}s`,
               }}
             >
-              {/* +Number */}
+              {/* Number */}
               <div
                 dir="ltr"
                 style={{
                   unicodeBidi: "embed",
                   display:     "inline-flex",
                   alignItems:  "baseline",
-                  gap:         2,
                   lineHeight:  1,
                 }}
               >
-                <span
-                  style={{
-                    fontWeight: 300,
-                    color:      "#9E7C3A",
-                    fontSize:   "clamp(18px, 3vw, 26px)",
-                    lineHeight: 1,
-                  }}
-                >
-                  +
-                </span>
                 <span
                   style={{
                     fontWeight:            800,
@@ -145,7 +103,7 @@ export function StatsSection() {
                     backgroundClip:        "text",
                   }}
                 >
-                  {formatNum(counts[i])}
+                  {stat.display}
                 </span>
               </div>
 

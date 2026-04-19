@@ -1,9 +1,11 @@
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "https://beegood.online";
+import { CLIENT } from "@/lib/client";
+
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? `https://${CLIENT.domain}`;
 
 const website = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": "BeeGood - הדר דנן",
+  "name": `BeeGood - ${CLIENT.name}`,
   "url": APP_URL,
   "inLanguage": "he",
 };
@@ -11,17 +13,11 @@ const website = {
 const person = {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "הדר דנן",
+  "name": CLIENT.name,
   "url": APP_URL,
-  "jobTitle": "מומחית שיווק, יוצרת שיטת TrueSignal",
-  "description": "הדר דנן, מומחית לשיווק אותנטי ויוצרת שיטת TrueSignal by BeeGood. קורסים, סדנאות וליווי אישי לבעלי עסקים.",
-  "knowsAbout": ["שיווק דיגיטלי", "אסטרטגיה עסקית", "יצירת תוכן", "מיתוג אישי", "TrueSignal"],
-  "sameAs": [
-    "https://www.instagram.com/hadar_danan",
-    "https://www.tiktok.com/@hadardanann",
-    "https://open.spotify.com/show/12EPZoAiHLq63tiq6GjreC",
-    "https://podcasts.apple.com/il/podcast/id1829722848",
-  ],
+  "jobTitle": CLIENT.about.tagline,
+  "description": CLIENT.about.body,
+  "knowsAbout": ["שיווק דיגיטלי", "אסטרטגיה עסקית", "יצירת תוכן", "מיתוג אישי"],
   "worksFor": {
     "@type": "Organization",
     "name": "BeeGood",
@@ -35,9 +31,8 @@ const organization = {
   "name": "BeeGood",
   "url": APP_URL,
   "logo": `${APP_URL}/beegood_logo.png`,
-  "description": "BeeGood - שיטת TrueSignal לשיווק אותנטי לעסקים",
-  "founder": { "@type": "Person", "name": "הדר דנן" },
-  "sameAs": ["https://www.instagram.com/hadar_danan"],
+  "description": CLIENT.meta.description,
+  "founder": { "@type": "Person", "name": CLIENT.name },
 };
 
 export function SchemaMarkup() {

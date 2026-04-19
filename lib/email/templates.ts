@@ -5,8 +5,10 @@
  * Design: dark header (#0a0a0f), white body, blue CTAs (#2563eb).
  */
 
-const APP_URL  = process.env.NEXT_PUBLIC_APP_URL ?? "https://beegood.online";
-const FROM_NAME = "הדר דנן";
+import { CLIENT } from "@/lib/client";
+
+const APP_URL   = process.env.NEXT_PUBLIC_APP_URL ?? `https://${CLIENT.domain}`;
+const FROM_NAME = CLIENT.email.from_name;
 
 // ── Base layout ───────────────────────────────────────────────
 function base(content: string): string {

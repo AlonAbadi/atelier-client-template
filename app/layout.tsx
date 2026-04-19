@@ -8,6 +8,7 @@ import { MobileNavServer }     from "@/components/MobileNavServer";
 import { DesktopNavServer }    from "@/components/DesktopNavServer";
 import { LayoutShell }         from "@/components/LayoutShell";
 import { SchemaMarkup }        from "@/components/SchemaMarkup";
+import { CLIENT }              from "@/lib/client";
 
 const assistant = Assistant({
   subsets:  ["hebrew", "latin"],
@@ -15,7 +16,7 @@ const assistant = Assistant({
   display:  "swap",
 });
 
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "https://beegood.online";
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? `https://${CLIENT.domain}`;
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -23,15 +24,15 @@ export const viewport: Viewport = {
   maximumScale: 1,
 };
 
-const OG_IMAGE = "https://beegood.online/og-image.jpg";
+const OG_IMAGE = `https://${CLIENT.domain}${CLIENT.meta.og_image}`;
 
-const TITLE       = "הדר דנן | שיטת TrueSignal by BeeGood - שיווק אותנטי לעסקים";
-const DESCRIPTION = "הדר דנן, מומחית לשיווק אותנטי ויוצרת שיטת TrueSignal by BeeGood. קורסים, סדנאות וליווי אישי לבעלי עסקים שרוצים לשווק בלי לאבד את עצמם.";
+const TITLE       = CLIENT.meta.title;
+const DESCRIPTION = CLIENT.meta.description;
 
 export const metadata: Metadata = {
   title: {
     default:  TITLE,
-    template: "%s | הדר דנן",
+    template: `%s | ${CLIENT.name}`,
   },
   description: DESCRIPTION,
   metadataBase: new URL(APP_URL),
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
   openGraph: {
     type:        "website",
     locale:      "he_IL",
-    siteName:    "הדר דנן | BeeGood",
+    siteName:    `${CLIENT.name} | BeeGood`,
     title:       TITLE,
     description: DESCRIPTION,
     url:         APP_URL,
