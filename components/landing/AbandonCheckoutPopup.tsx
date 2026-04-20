@@ -76,7 +76,7 @@ export function AbandonCheckoutPopup({ product }: { product: Product }) {
             className="font-black text-3xl tracking-widest"
             style={{ color: "#4ade80" }}
           >
-            HADAR10
+            SAVE10
           </p>
           <p className="text-gray-500 text-xs mt-2">10% הנחה · תקף ל-24 שעות</p>
         </div>

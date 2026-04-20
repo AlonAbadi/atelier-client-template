@@ -1,3 +1,4 @@
+import { CLIENT } from "@/lib/client";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import Link from "next/link";
@@ -5,7 +6,7 @@ import Link from "next/link";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "אזור החברים | הדר דנן",
+  title: `אזור החברים | ${CLIENT.name}`,
 };
 
 const DAYS = [

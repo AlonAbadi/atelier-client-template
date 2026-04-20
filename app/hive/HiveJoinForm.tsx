@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { CLIENT } from "@/lib/client";
 
 type Step =
   | "idle"
@@ -156,7 +157,7 @@ export function HiveJoinForm({ onClose }: HiveJoinFormProps) {
               </h2>
               <p className="text-sm" style={{ color: "#9E9990" }}>
                 {tier === "discounted_29"
-                  ? "מסלול לקוחות הדר - ₪29/חודש"
+                  ? `מסלול לקוחות ${CLIENT.name} - ₪${CLIENT.products.hive.price_discounted}/חודש`
                   : "מסלול פתוח - ₪97/חודש"}
               </p>
             </div>
@@ -289,11 +290,11 @@ export function HiveJoinForm({ onClose }: HiveJoinFormProps) {
               <p>
                 • לביטול:{" "}
                 <a
-                  href="mailto:hive@beegood.online"
+                  href={`mailto:${CLIENT.email.from_email}`}
                   className="underline hover:opacity-80"
                   style={{ color: "#C9964A" }}
                 >
-                  hive@beegood.online
+                  {CLIENT.email.from_email}
                 </a>{" "}
                 או לחץ &#39;בטל מנוי&#39; באזור האישי
               </p>

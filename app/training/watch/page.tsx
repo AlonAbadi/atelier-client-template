@@ -5,10 +5,11 @@ import { PageViewTracker } from "./PageViewTracker";
 import { VimeoTracker } from "./VimeoTracker";
 import { WatchGreeting } from "./WatchPersonalized";
 import { ViewTracker } from "./ViewTracker";
+import { CLIENT } from "@/lib/client";
 
 export const metadata: Metadata = {
-  title: "הדרכה חינמית - צפייה | הדר דנן",
-  description: "צפה בהדרכה החינמית של הדר דנן: למה השיווק שלך לא עובד - ומה לעשות עם זה.",
+  title: `${CLIENT.products.training.title} - צפייה | ${CLIENT.name}`,
+  description: CLIENT.products.training.description,
   alternates: { canonical: "/training/watch" },
 };
 

@@ -29,7 +29,7 @@ export async function handleNotifyAdmin(
 
   const resend = new Resend(apiKey);
   const FROM_ADDRESS =
-    process.env.NEXT_PUBLIC_FROM_EMAIL ?? "noreply@beegood.online";
+    process.env.NEXT_PUBLIC_FROM_EMAIL ?? `noreply@${process.env.NEXT_PUBLIC_APP_URL?.replace(/https?:\/\//, "") ?? "example.com"}`;
 
   const { error } = await resend.emails.send({
     from: `${FROM_NAME} System <${FROM_ADDRESS}>`,

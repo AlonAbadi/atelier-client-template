@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { createBrowserClient } from "@/lib/supabase/browser";
+import { CLIENT } from "@/lib/client";
 
 const S = {
   page: {
@@ -123,7 +124,7 @@ export default function ForgotPasswordPage() {
     return (
       <div style={S.page} dir="rtl" lang="he">
         <div style={S.card}>
-          <div style={S.logo}><div style={S.logoText}>הדר דנן</div></div>
+          <div style={S.logo}><div style={S.logoText}>{CLIENT.name}</div></div>
           <div style={S.title}>בדוק את האימייל שלך</div>
           <div style={S.subtitle}>
             אם הכתובת <strong style={{ color: "#EDE9E1" }}>{email}</strong> רשומה אצלנו,
@@ -145,7 +146,7 @@ export default function ForgotPasswordPage() {
   return (
     <div style={S.page} dir="rtl" lang="he">
       <div style={S.card}>
-        <div style={S.logo}><div style={S.logoText}>הדר דנן</div></div>
+        <div style={S.logo}><div style={S.logoText}>{CLIENT.name}</div></div>
         <div style={S.title}>שכחתי סיסמה</div>
         <div style={S.subtitle}>נשלח לך קישור לאיפוס הסיסמה</div>
 

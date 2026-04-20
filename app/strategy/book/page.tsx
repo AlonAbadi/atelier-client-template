@@ -2,10 +2,11 @@ import Link from "next/link";
 import { createServerClient } from "@/lib/supabase/server";
 import { StrategyBookFlow } from "./StrategyBookFlow";
 import { getUserCredit } from "@/lib/credit";
+import { CLIENT } from "@/lib/client";
 
 export const metadata = {
-  title: "קביעת פגישת אסטרטגיה | הדר דנן",
-  description: "בחר/י מועד נוח לפגישת אסטרטגיה אחד-על-אחד - 90 דקות, תוכנית שנה קדימה.",
+  title: `קביעת ${CLIENT.products.strategy.title} | ${CLIENT.name}`,
+  description: CLIENT.products.strategy.description,
 };
 
 export default async function BookingPage({
@@ -35,7 +36,7 @@ export default async function BookingPage({
       >
         <div className="max-w-5xl mx-auto flex items-center justify-between h-16">
           <Link href="/" className="font-black text-xl" style={{ color: "#EDE9E1" }}>
-            הדר דנן
+            {CLIENT.name}
           </Link>
           <Link href="/strategy" className="text-sm transition" style={{ color: "#9E9990" }}>
             ← חזור לעמוד הפגישה
@@ -78,12 +79,8 @@ export default async function BookingPage({
         className="border-t px-4 py-6 text-center text-xs"
         style={{ borderColor: "#2C323E", background: "#0D1018", color: "#9E9990" }}
       >
-        <p className="mb-1 font-medium" style={{ color: "rgba(158,153,144,0.6)" }}>
-          אנחנו לא יוצרים תוכן. אנחנו בונים את האות שלך. |{" "}
-          <span dir="ltr" style={{ unicodeBidi: "embed" }}>TrueSignal©</span>
-        </p>
         <p>
-          © {new Date().getFullYear()} הדר דנן בע״מ ·{" "}
+          © {new Date().getFullYear()} {CLIENT.legal_name} ·{" "}
           <Link href="/privacy" className="transition hover:text-[#EDE9E1]">מדיניות פרטיות</Link>
           {" · "}
           <Link href="/accessibility" className="transition hover:text-[#EDE9E1]">הצהרת נגישות</Link>

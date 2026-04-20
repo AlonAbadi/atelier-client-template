@@ -7,7 +7,8 @@ Fork this repo for each new client — then edit **only `lib/client.ts`**.
 Everything else (nav, meta, emails, schema, payments) reads from that single file.
 
 **Template repo:** https://github.com/AlonAbadi/beegood-template
-**Based on:** hadar-danan (beegood.online) — the reference deployment
+
+**Before starting any work on a new client deployment, read `client-brief.md`** — it contains all the client-specific content (copy, products, philosophy, testimonials) you will need.
 
 ---
 
@@ -83,14 +84,6 @@ All pages use the Santosha dark palette. Colors come from `CLIENT.colors`.
 **Font:** `Assistant` (Google Fonts) — the only font.
 
 ---
-
-## What's NOT in this template (hadar-danan only)
-
-- `/app/atelier` — lead intake form with AI analysis
-- `/app/admin/atelier` — atelier admin dashboard
-- `/api/admin/atelier/*` — atelier API routes
-
-These live only in the `hadar-danan` repo.
 
 ---
 

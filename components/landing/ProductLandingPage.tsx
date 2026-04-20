@@ -941,9 +941,6 @@ export default function ProductLandingPage({
       {/* ── Footer ──────────────────────────────────────────────── */}
       <div className="lp-footer">
         <div className="lp-footer-logo">{CLIENT.name}</div>
-        <div className="lp-footer-signal">
-          אנחנו לא יוצרים תוכן. אנחנו בונים את האות שלך. | <span dir="ltr">TrueSignal©</span>
-        </div>
         <div className="lp-footer-links">
           <a href="/terms">תנאי שימוש</a>
           <a href="/privacy">מדיניות פרטיות</a>
@@ -952,9 +949,6 @@ export default function ProductLandingPage({
         </div>
         <div className="lp-footer-company">
           © 2026 {CLIENT.legal_name} | ח.פ. {CLIENT.company_id}
-        </div>
-        <div className="lp-footer-company">
-          החילזון 5, רמת גן | 053-9566961
         </div>
       </div>
     </div>

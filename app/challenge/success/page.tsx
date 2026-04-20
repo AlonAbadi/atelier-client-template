@@ -1,7 +1,8 @@
+import { CLIENT } from "@/lib/client";
 import { SuccessPage } from "@/components/SuccessPage";
 
 export const metadata = {
-  title: "ברוך הבא לאתגר! | הדר דנן",
+  title: `ברוך הבא לאתגר! | ${CLIENT.name}`,
   robots: { index: false, follow: false },
 };
 

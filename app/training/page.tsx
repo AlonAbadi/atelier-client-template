@@ -3,10 +3,11 @@ import ProductLandingPage from "@/components/landing/ProductLandingPage";
 import { SignupForm } from "@/components/landing/SignupForm";
 import { TrainingViewCounter } from "@/app/training/watch/TrainingViewCounter";
 import { getTrainingViewCount } from "@/lib/training-views";
+import { CLIENT } from "@/lib/client";
 
 export const metadata: Metadata = {
-  title: "הדרכה חינמית | הדר דנן",
-  description: "גלה למה השיווק שלך לא עובד - ומה לעשות עם זה. הדרכה חינמית של הדר דנן, 20 דקות שמשנות גישה.",
+  title: `${CLIENT.products.training.title} | ${CLIENT.name}`,
+  description: CLIENT.products.training.description,
   alternates: { canonical: "/training" },
 };
 
@@ -15,65 +16,59 @@ export default async function TrainingPage() {
 
   return (
     <ProductLandingPage
-      productName="הדרכה חינמית"
+      productName={CLIENT.products.training.title}
       price={0}
       checkoutHref="#cta"
 
-      vslVideoId="1182619417"
-      vimeoId="1182657741"
-      headline={<>הדרכה חינמית. <em>הצעד הראשון</em> לבידול שלך.</>}
-      heroSub="הדרכה של 20 דקות. בלי ציוד, בלי ניסיון, בלי תקציב. רק בהירות אמיתית על הפער בין מי שאתה לבין מה שהעסק שלך משדר."
+      // TODO: set real vimeo_id in CLIENT.products.training.vimeo_id
+      vimeoId={CLIENT.products.training.vimeo_id || undefined}
+
+      // TODO: replace all text below with real client copy
+      headline={<><em>{CLIENT.products.training.title}</em></>}
+      heroSub={CLIENT.products.training.description}
       stats={[
         { val: "20", label: "דקות" },
         { val: "0",  label: "עלות" },
-        { val: <TrainingViewCounter initialCount={viewCount} />, label: "צפו בהדרכה" },
+        { val: <TrainingViewCounter initialCount={viewCount} />, label: "צפו" },
       ]}
 
       problemItems={[
-        { icon: "🧭", text: "מה גורם לשיווק להרגיש מאולץ - ואיך לתקן את זה בלי להחליף הכל." },
-        { icon: "🎯", text: "איך לזהות את המסר האמיתי שלך ולדבר אליו ישר - בלי לנחש." },
-        { icon: "📱", text: "הצעד הראשון שאפשר לעשות כבר היום - בלי תקציב ובלי ציוד." },
+        { icon: "🔸", text: "TODO: בעיה ראשונה שהלקוח מזדהה איתה" },
+        { icon: "🔸", text: "TODO: בעיה שנייה" },
+        { icon: "🔸", text: "TODO: בעיה שלישית" },
       ]}
-      agitationText="שיווק שמרגיש מאולץ לא נובע מחוסר יצירתיות - הוא נובע מחוסר בהירות. ה-20 דקות האלה ייתנו לך את הבהירות."
+      agitationText="TODO: משפט אגיטציה — מה גורם לבעיה להיות חמורה יותר?"
 
-      solutionTitle="מה תלמד ב-20 הדקות?"
+      solutionTitle="TODO: מה לומדים בהדרכה?"
       solutionItems={[
-        { num: "1", title: "למה השיווק מרגיש מאולץ",  desc: "נסביר את הפער הנפוץ בין מה שעסק עושה לבין מה שהלקוח רואה - ואיך לגשר עליו." },
-        { num: "2", title: "איך מוצאים את המסר האמיתי", desc: "תרגיל פשוט שעוזר לזהות את החוזקה הייחודית שלך - זו שהלקוחות הכי מדברים עליה." },
-        { num: "3", title: "הצעד הראשון לשינוי",       desc: "פעולה אחת שאפשר לעשות מחר בבוקר - שמייצרת תוצאה גלויה תוך 7 ימים." },
+        { num: "1", title: "TODO: נושא ראשון", desc: "TODO" },
+        { num: "2", title: "TODO: נושא שני",   desc: "TODO" },
+        { num: "3", title: "TODO: נושא שלישי", desc: "TODO" },
       ]}
 
-      notForItems={[
-        "מי שרוצה פתרון מהיר ללא מאמץ",
-        "עסקים שמחפשים תבניות גנריות",
-      ]}
-      forItems={[
-        "בעלי עסקים שמרגישים שהשיווק לא משקף אותם",
-        "מי שרוצה בהירות לפני שמשקיעים כסף",
-        "מי שמוכן לצעד ראשון",
-      ]}
+      notForItems={["TODO: למי לא מתאים"]}
+      forItems={["TODO: למי מתאים"]}
 
-      whoName="הדר דנן"
-      whoRole="אסטרטגיסטית שיווק ותוכן"
-      whoText="יצרתי את ההדרכה הזו כנקודת כניסה לשיטת TrueSignal. 20 דקות שמראות למה רוב השיווק מרגיש מזויף - ואיך לתקן את זה."
+      whoName={CLIENT.name}
+      whoRole={CLIENT.about.tagline}
+      whoText={CLIENT.about.body}
 
       proofStats={[
-        { val: "250+", label: "עסקים" },
-        { val: "97%",  label: "ממליצים" },
+        { val: CLIENT.social_proof.stat1.number, label: CLIENT.social_proof.stat1.label },
+        { val: CLIENT.social_proof.stat2.number, label: CLIENT.social_proof.stat2.label },
       ]}
       testimonials={[
-        { text: "ב-20 דקות הבנתי יותר על השיווק שלי מאשר בחצי שנה של קורסים.", author: "מיכל ר.", role: "מאמנת אישית" },
-        { text: "הדרכה פשוטה שנתנה לי כיוון ברור. עשיתי את הצעד הראשון עוד באותו יום.", author: "יואב ס.", role: "יועץ עסקי" },
+        { text: "TODO: עדות ראשונה", author: "שם", role: "תפקיד" },
+        { text: "TODO: עדות שנייה",  author: "שם", role: "תפקיד" },
       ]}
 
       faqs={[
-        { q: "האם זה באמת חינם?",               a: "כן. ללא תשלום עכשיו ואחר כך. הדרכה מלאה כמתנה." },
-        { q: "לאן שולחים את ההדרכה?",           a: "ישר לאימייל שלך, תוך 5 דקות מהרישום." },
-        { q: "כמה זמן ההדרכה?",                  a: "20 דקות. לומדים בקצב שלך - ניתן לעצור ולחזור." },
-        { q: "מה קורה אחרי ההדרכה?",            a: "ממשיכים לשלב הבא בקצב שלך. אין לחץ, אין התחייבות." },
+        { q: "האם זה באמת חינם?",        a: "כן. ללא תשלום עכשיו ואחר כך." },
+        { q: "כמה זמן ההדרכה?",           a: "20 דקות. בקצב שלך." },
+        { q: "מה קורה אחרי ההדרכה?",     a: "ממשיכים לשלב הבא בקצב שלך. אין לחץ." },
       ]}
 
-      finalTitle="מוכן/ת לגלות את המסר האמיתי שלך?"
+      finalTitle="TODO: כותרת סיום"
       finalSub="20 דקות. חינם לגמרי. ללא התחייבות."
 
       hideMicroCommitment
@@ -81,23 +76,16 @@ export default async function TrainingPage() {
       priceSectionSlot={
         <section style={{ padding: "48px 20px", maxWidth: 480, margin: "0 auto" }}>
           <div style={{
-            background: "#191F2B", border: "1px solid #2C323E",
+            background: CLIENT.colors.card, border: `1px solid ${CLIENT.colors.border}`,
             borderRadius: 20, padding: "32px 28px",
           }}>
-            <p style={{ fontWeight: 900, fontSize: 20, textAlign: "center", color: "#EDE9E1", margin: "0 0 24px" }}>
+            <p style={{ fontWeight: 900, fontSize: 20, textAlign: "center", color: CLIENT.colors.fg, margin: "0 0 24px" }}>
               שלח/י לי את ההדרכה
             </p>
             <SignupForm ctaLabel="שלח לי את ההדרכה" />
-            <p style={{ textAlign: "center", fontSize: 12, color: "#9E9990", marginTop: 14 }}>
+            <p style={{ textAlign: "center", fontSize: 12, color: CLIENT.colors.fg_muted, marginTop: 14 }}>
               ללא ספאם. ניתן להסרה בכל עת.
             </p>
-            <div style={{
-              marginTop: 16, padding: "12px 14px",
-              background: "rgba(201,150,74,0.07)", border: "1px solid rgba(201,150,74,0.1)",
-              borderRadius: 10, fontSize: 13, color: "#F0C564", lineHeight: 1.5, textAlign: "right",
-            }}>
-              כל שקל שתשקיע בהמשך נחשב לשלב הבא - גישה מלאה למסלול השלם.
-            </div>
           </div>
         </section>
       }

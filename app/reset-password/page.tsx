@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { createBrowserClient } from "@/lib/supabase/browser";
+import { CLIENT } from "@/lib/client";
 
 const S = {
   page: {
@@ -174,7 +175,7 @@ export default function ResetPasswordPage() {
     return (
       <div style={S.page} dir="rtl" lang="he">
         <div style={S.card}>
-          <div style={S.logo}><div style={S.logoText}>הדר דנן</div></div>
+          <div style={S.logo}><div style={S.logoText}>{CLIENT.name}</div></div>
           <div style={S.title}>הקישור פג תוקף</div>
           <div style={S.subtitle}>
             קישור האיפוס כבר שומש או פג תוקפו.
@@ -200,7 +201,7 @@ export default function ResetPasswordPage() {
     return (
       <div style={S.page} dir="rtl" lang="he">
         <div style={S.card}>
-          <div style={S.logo}><div style={S.logoText}>הדר דנן</div></div>
+          <div style={S.logo}><div style={S.logoText}>{CLIENT.name}</div></div>
           <div style={{ ...S.subtitle, marginBottom: 0 }}>מאמת קישור...</div>
         </div>
       </div>
@@ -210,7 +211,7 @@ export default function ResetPasswordPage() {
   return (
     <div style={S.page} dir="rtl" lang="he">
       <div style={S.card}>
-        <div style={S.logo}><div style={S.logoText}>הדר דנן</div></div>
+        <div style={S.logo}><div style={S.logoText}>{CLIENT.name}</div></div>
         <div style={S.title}>איפוס סיסמה</div>
         <div style={S.subtitle}>בחר סיסמה חדשה לחשבון שלך</div>
 

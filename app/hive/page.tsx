@@ -1,77 +1,69 @@
 import type { Metadata } from "next";
 import ProductLandingPage from "@/components/landing/ProductLandingPage";
 import { HivePricingSection } from "./HivePricingSection";
+import { CLIENT } from "@/lib/client";
 
 export const metadata: Metadata = {
-  title: "הכוורת | קהילה חודשית - הדר דנן",
-  description: "קהילה חודשית של בעלי עסקים. מפגש זום עם הדר, תוכן בלעדי, קהילת WhatsApp. 29 שקל ללקוחות הדר, 97 שקל לכולם.",
+  title: `${CLIENT.products.hive.title} | ${CLIENT.name}`,
+  description: CLIENT.products.hive.description,
   alternates: { canonical: "/hive" },
 };
 
 export default function HivePage() {
   return (
     <ProductLandingPage
-      productName="הכוורת"
-      price={97}
+      productName={CLIENT.products.hive.title}
+      price={CLIENT.products.hive.price_basic}
       checkoutHref="#cta"
 
-      headline={<>הכוורת. <em>קהילה שצומחת</em> ביחד.</>}
-      heroSub="לא קורס. לא אתגר. מקום שבו ממשיכים לצמוח - יחד. מפגשי זום חודשיים, תוכן בלעדי, וקהילה פעילה שמבינה אותך."
+      // TODO: replace all text below with real client copy
+      headline={<><em>{CLIENT.products.hive.title}</em></>}
+      heroSub={CLIENT.products.hive.description}
       stats={[
-        { val: "1x",   label: "מפגש זום בחודש" },
-        { val: "29",   label: "שקל ללקוחות הדר" },
-        { val: "97",   label: "שקל לכולם" },
-        { val: "0",    label: "התחייבות" },
+        { val: "1x",  label: "מפגש בחודש" },
+        { val: String(CLIENT.products.hive.price_basic), label: "ש״ח/חודש" },
+        { val: "0",   label: "התחייבות" },
       ]}
 
       problemItems={[
-        { icon: "🔇", text: "גמרת קורס, גמרת סדנה - ועכשיו אתה לבד. אין מי לשאול, אין מי לשמוע." },
-        { icon: "📉", text: "בלי עדכונים שוטפים - השיווק נוטה לחזור לישן. צמיחה צריכה מגע קבוע." },
-        { icon: "🔄", text: "כל חודש בלי קבוצת תמיכה, קל לאבד מומנטום ולחזור לניחושים." },
+        { icon: "🔸", text: "TODO: בעיה ראשונה" },
+        { icon: "🔸", text: "TODO: בעיה שנייה" },
+        { icon: "🔸", text: "TODO: בעיה שלישית" },
       ]}
-      agitationText="הצמיחה האמיתית קורה לאחר הקורס - לא בתוכו. הכוורת היא המקום שבו ממשיכים לצמוח, כל חודש."
+      agitationText="TODO: משפט אגיטציה"
 
       solutionTitle="מה כולל המנוי?"
       solutionItems={[
-        { num: "1", title: "מפגש זום חודשי עם הדר",    desc: "שעה אחת בחודש עם הדר עצמה - שאלות, תוכן עדכני, ואסטרטגיה לחודש הבא." },
-        { num: "2", title: "תוכן בלעדי",               desc: "תכנים שלא יוצאים לשום מקום אחר - רק לחברי הכוורת. כלים, שיטות, ומה עובד עכשיו." },
-        { num: "3", title: "קהילת WhatsApp פעילה",     desc: "קבוצת WhatsApp של חברי הכוורת בלבד - תמיכה, שיתוף ניסיון, וחיבורים עסקיים." },
+        { num: "1", title: "TODO: רכיב ראשון", desc: "TODO" },
+        { num: "2", title: "TODO: רכיב שני",   desc: "TODO" },
+        { num: "3", title: "TODO: רכיב שלישי", desc: "TODO" },
       ]}
 
-      notForItems={[
-        "מי שרוצה פתרון חד-פעמי",
-        "מי שלא עובד על העסק שלו באופן שוטף",
-      ]}
-      forItems={[
-        "מי שסיים קורס, סדנה או אתגר",
-        "בעלי עסקים שרוצים קהילה שמבינה אותם",
-        "מי שרוצה עדכון שוטף ממה שעובד עכשיו",
-        "מי שרוצה חיבורים עסקיים אמיתיים",
-      ]}
+      notForItems={["TODO: למי לא מתאים"]}
+      forItems={["TODO: למי מתאים"]}
 
-      whoName="הדר דנן"
-      whoRole="מייסדת הכוורת"
-      whoText="הכוורת נוצרה כי ראיתי שרוב בעלי העסקים מפסיקים לצמוח אחרי שגומרים קורס. חסר מגע קבוע, עדכון שוטף וקהילה שמבינה את האתגרים. זה בדיוק מה שהכוורת נותנת."
+      whoName={CLIENT.name}
+      whoRole={CLIENT.about.tagline}
+      whoText={CLIENT.about.body}
 
       proofStats={[
-        { val: "29",   label: "שקל ללקוחות הדר" },
-        { val: "97",   label: "מחיר רגיל" },
-        { val: "1",    label: "מפגש זום בחודש" },
+        { val: CLIENT.social_proof.stat1.number, label: CLIENT.social_proof.stat1.label },
+        { val: CLIENT.social_proof.stat2.number, label: CLIENT.social_proof.stat2.label },
+        { val: CLIENT.social_proof.stat3.number, label: CLIENT.social_proof.stat3.label },
       ]}
       testimonials={[
-        { text: "הכוורת שומרת אותי ממוקד. כל מפגש עם הדר נותן לי מוטיבציה ורעיונות חדשים.", author: "ריקי מ.", role: "מאמנת אישית" },
-        { text: "הקהילה שאין לה תחליף - כולם מבינים מה עוברים עלינו כבעלי עסקים.", author: "דן כ.", role: "יועץ עסקי" },
+        { text: "TODO: עדות ראשונה", author: "שם", role: "תפקיד" },
+        { text: "TODO: עדות שנייה",  author: "שם", role: "תפקיד" },
       ]}
 
       faqs={[
-        { q: "איך מבטלים את המנוי?",              a: "בכל עת - דרך אזור האישי (/my) או בוואטסאפ. ביטול תוך 14 ימים = החזר מלא." },
-        { q: "מה ההבדל בין 29 שקל ל-97 שקל?",    a: "אותו מנוי בדיוק. מחיר 29 שקל הוא ללקוחות הדר שכבר רכשו אחד ממוצרי המסלול." },
-        { q: "מתי מתקיים מפגש הזום?",             a: "פעם בחודש - מועד מפורסם בתחילת כל חודש לכל חברי הכוורת." },
-        { q: "האם יש התחייבות חודשית מינימלית?",  a: "לא. מבטלים בכל עת. אין עלות ביטול." },
+        { q: "איך מבטלים את המנוי?",             a: "בכל עת — דרך האזור האישי (/my) או בוואטסאפ. ביטול תוך 14 ימים = החזר מלא." },
+        { q: "האם יש התחייבות מינימלית?",         a: "לא. ניתן לביטול בכל עת ללא עלות." },
+        { q: "TODO: שאלה נוספת?",                 a: "TODO: תשובה" },
       ]}
 
-      finalTitle="הצטרף/י לכוורת"
-      finalSub="ניתן לביטול בכל עת - ללא התחייבות."
+      finalTitle="TODO: כותרת סיום"
+      finalSub="ניתן לביטול בכל עת."
 
       hideMicroCommitment
 

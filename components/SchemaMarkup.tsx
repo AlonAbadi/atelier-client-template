@@ -5,7 +5,7 @@ const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? `https://${CLIENT.domain}`;
 const website = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "name": `BeeGood - ${CLIENT.name}`,
+  "name": CLIENT.name,
   "url": APP_URL,
   "inLanguage": "he",
 };
@@ -17,10 +17,11 @@ const person = {
   "url": APP_URL,
   "jobTitle": CLIENT.about.tagline,
   "description": CLIENT.about.body,
-  "knowsAbout": ["שיווק דיגיטלי", "אסטרטגיה עסקית", "יצירת תוכן", "מיתוג אישי"],
+  // TODO: add client-specific knowsAbout topics
+  "knowsAbout": [] as string[],
   "worksFor": {
     "@type": "Organization",
-    "name": "BeeGood",
+    "name": CLIENT.legal_name,
     "url": APP_URL,
   },
 };
@@ -28,9 +29,9 @@ const person = {
 const organization = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "BeeGood",
+  "name": CLIENT.legal_name,
   "url": APP_URL,
-  "logo": `${APP_URL}/beegood_logo.png`,
+  "logo": `${APP_URL}${CLIENT.meta.og_image}`,
   "description": CLIENT.meta.description,
   "founder": { "@type": "Person", "name": CLIENT.name },
 };

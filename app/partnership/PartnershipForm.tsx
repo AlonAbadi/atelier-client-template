@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { ConsentCheckbox } from "@/components/landing/ConsentCheckbox";
 import { getSessionUser } from "@/lib/quiz-session";
+import { CLIENT } from "@/lib/client";
 
 function getCookie(name: string): string | undefined {
   if (typeof document === "undefined") return undefined;
@@ -65,7 +66,7 @@ export function PartnershipForm() {
         <div className="flex flex-col gap-2">
           <h3 className="text-2xl font-black" style={{ color: "#EDE9E1" }}>קיבלנו.</h3>
           <p className="leading-relaxed max-w-sm" style={{ color: "#9E9990" }}>
-            הדר תקרא את זה אישית ותחזור אליך - בדרך כלל תוך יום עסקים.
+            {CLIENT.name} תקרא את זה אישית ותחזור אליך - בדרך כלל תוך יום עסקים.
           </p>
         </div>
         <div

@@ -1,104 +1,54 @@
-// Shared quiz display config — used by /quiz page and /account page.
-// Scoring logic (SCORES, QUESTIONS, computeScores) stays in app/quiz/QuizClient.tsx.
+// Quiz display config — used by /quiz page and /account page.
+// PRODUCTS, QUESTIONS and SCORES live in app/quiz/QuizClient.tsx.
+// This file contains display metadata per product — fill per client.
 
 export type Answer = "A" | "B" | "C" | "D";
-
 export type BulletRule = { q: number; a: Answer; text: string };
 
-// ── Product display metadata ──────────────────────────────────────
+// ── Product display metadata ─────────────────────────────────────
+// Keys must match the product IDs used in PRODUCTS inside QuizClient.tsx
 
 export const PRODUCT_IMAGE: Record<string, string> = {
-  free_training: "/hadarlesson.png",
-  challenge:     "/etgar.png",
-  workshop:      "/sadna.png",
-  course:        "/coursehadar.png",
-  strategy:      "/strategymeeting.png",
-  premium:       "/shooting.png",
-  partnership:   "/hadar.png",
+  // TODO: fill with real image paths after uploading to public/
+  free_training: "/training.jpg",
+  challenge:     "/challenge.jpg",
+  hive:          "/og-image.jpg",
 };
 
 export const PRODUCT_META: Record<string, string> = {
-  free_training: "סרטון חינמי · 90 דקות",
+  // Short descriptor shown under the product card
+  free_training: "סרטון חינמי · 20 דקות",
   challenge:     "7 ימים · אונליין",
-  workshop:      "יום שלם · קבוצה קטנה",
-  course:        "16 שיעורים · לפי קצב שלך",
-  strategy:      "90 דקות · אחד על אחד",
-  premium:       "יום שלם · צוות מקצועי",
-  partnership:   "ליווי חודשי · שותפות מלאה",
+  hive:          "קהילה חודשית",
 };
 
 export const PRODUCT_DESC: Record<string, string> = {
-  free_training: "הבן למה השיווק שלך לא עובד - לפני שאתה משקיע שקל אחד",
-  challenge:     "7 ימים, 7 סרטונים - מהחסם הראשון ועד תוכן שמביא לקוחות",
-  workshop:      "יום אחד שמפרק חסמים ובונה אסטרטגיה שלמה",
-  course:        "16 שיעורים - השיטה המלאה מאסטרטגיה ועד מכירות טבעיות",
-  strategy:      "שעה אחת עם הדר שתבהיר יותר מחודשים של ניסיון עצמאי",
-  premium:       "יום שלם עם הצוות - ותצא עם 16 סרטונים מוכנים לפרסום",
-  partnership:   "לא ספק שירות - שותף אסטרטגי לצמיחה לטווח ארוך",
+  // One-sentence description for "Also consider" cards
+  free_training: "נקודת הפתיחה — להבין לפני שמתחייבים",
+  challenge:     "שבוע אחד שמשנה משהו בפנים",
+  hive:          "שגרה קבועה עם קהילה שמבינה",
 };
 
 export const CTA_TEXT: Record<string, string> = {
   free_training: "לצפות עכשיו",
   challenge:     "להצטרף לאתגר",
-  workshop:      "לשריין מקום",
-  course:        "להתחיל ללמוד",
-  strategy:      "לקבוע פגישה",
-  premium:       "לתאם יום צילום",
-  partnership:   "לשוחח על שותפות",
+  hive:          "להצטרף לקהילה",
 };
 
-// ── Personalized bullet rules ─────────────────────────────────────
+// ── Personalized bullet rules ────────────────────────────────────
+// Each rule maps a question index + answer to a personal reason text.
+// Add rules that match patterns unique to each product.
+// q = question index (0-based), a = "A"|"B"|"C"|"D"
 
 export const BULLET_RULES: Record<string, BulletRule[]> = {
   free_training: [
-    { q: 0, a: "A", text: "בתחילת הדרך - ההדרכה תחסוך לך חודשים של ניסוי וטעייה" },
-    { q: 1, a: "B", text: "אתה מייצר תוכן אבל לא רואה תוצאות - ההדרכה תסביר בדיוק למה" },
-    { q: 4, a: "A", text: "רוצה להבין לפני שמחליט - אפס סיכון, מקסימום בהירות" },
-    { q: 5, a: "A", text: "מתחיל חינם - ממש אפס סיכון כלכלי" },
-    { q: 2, a: "A", text: "לא מייצר תוכן בכלל - ההדרכה נותנת את הבסיס הנכון להתחיל" },
+    // TODO: fill per client quiz structure
   ],
   challenge: [
-    { q: 1, a: "A", text: "חסם המצלמה הוא בדיוק מה שהאתגר פותר - 7 ימים ואתה כבר שם" },
-    { q: 0, a: "A", text: "בתחילת הדרך - זה הצעד הכי מהיר שיניע אותך קדימה" },
-    { q: 0, a: "B", text: "עסק פעיל שרוצה יותר לקוחות - 7 ימי תוכן ישנו את המצב" },
-    { q: 3, a: "A", text: "אתה לומד בפעולה - 7 ימים, 7 סרטונים, תוצאות מיידיות" },
-    { q: 4, a: "B", text: "מוכן להתחיל בקרוב - האתגר מתחיל ממש עכשיו" },
-    { q: 2, a: "B", text: "ניסית לפה ולשם - האתגר בונה עקביות אמיתית תוך שבוע" },
+    // TODO: fill per client quiz structure
   ],
-  workshop: [
-    { q: 0, a: "B", text: "עסק פעיל שתקוע - יום אחד יפרק את החסמים ויזיז אותך קדימה" },
-    { q: 1, a: "B", text: "יש תוכן אבל אין תוצאות - הסדנה תגלה לך בדיוק מה חסר" },
-    { q: 3, a: "C", text: "אתה לומד הכי טוב עם פידבק אמיתי - הדר עונה לך ישירות בסדנה" },
-    { q: 4, a: "C", text: "דחוף לך - יום שלם, תוצאה ברורה ביציאה" },
-    { q: 1, a: "D", text: "השיווק לא משקף את האיכות שלך - הסדנה בונה אסטרטגיה שכן תשקף" },
-  ],
-  course: [
-    { q: 3, a: "B", text: "אתה לומד בקצב שלך - 16 שיעורים שאפשר לצרוך מתי שנוח" },
-    { q: 0, a: "C", text: "עסק מבוסס שצריך שיטה מלאה - הקורס נותן בדיוק את זה" },
-    { q: 1, a: "B", text: "תוכן בלי תוצאות - הקורס לומד אותך את השיטה שמשנה את המשוואה" },
-    { q: 2, a: "C", text: "מייצר תוכן אבל לא מרוצה מהאיכות - הקורס יעלה אותך לרמה" },
-    { q: 2, a: "B", text: "לא עקבי - הקורס המובנה בונה לך מסגרת שלא תוכל להתעלם ממנה" },
-  ],
-  strategy: [
-    { q: 0, a: "C", text: "עסק מבוסס שרוצה לצמוח - שעה אחת עם הדר שווה יותר מחודשים של ניסוי" },
-    { q: 1, a: "D", text: "השיווק לא משקף את האיכות שלך - פגישה אחת תשנה את הכיוון לגמרי" },
-    { q: 3, a: "C", text: "ליווי אישי עם פידבק - בדיוק מה שפגישת אסטרטגיה נותנת" },
-    { q: 4, a: "C", text: "דחוף ורוצה תוצאות - 90 דקות ויש לך מפת דרכים מלאה" },
-    { q: 4, a: "D", text: "יש לך פרויקט ספציפי - פגישת אסטרטגיה תכוון אותו נכון" },
-  ],
-  premium: [
-    { q: 3, a: "D", text: "אתה רוצה שמישהו יעשה בשבילך - בדיוק מה שיום הצילום מספק" },
-    { q: 1, a: "C", text: "אין לך זמן לעשות הכל לבד - הצוות שלנו עושה הכל ביום אחד" },
-    { q: 2, a: "D", text: "רוצה תוכן ברמה מקצועית גבוהה - 16 סרטונים שמדברים בעד עצמם" },
-    { q: 0, a: "C", text: "עסק מבוסס - תוכן שמשדר בדיוק את הרמה האמיתית שלך" },
-    { q: 4, a: "D", text: "יש לך פרויקט ספציפי - יום אחד וכל התוכן שלו מוכן" },
-  ],
-  partnership: [
-    { q: 0, a: "D", text: "חברה / מותג שמחפש שותף - לא ספק, שותף לדרך האמיתית" },
-    { q: 1, a: "C", text: "אין לך זמן לעשות הכל לבד - הצוות שלנו הופך לחלק מהצוות שלך" },
-    { q: 0, a: "C", text: "עסק מבוסס שרוצה לצמוח בגדול - שותפות אסטרטגית היא הדרך" },
-    { q: 5, a: "D", text: "מוכן להשקיע ברצינות בצמיחה - השותפות מחזירה את עצמה" },
-    { q: 1, a: "D", text: "השיווק לא משקף את האיכות שלך - שותפות מלאה תשנה את זה לגמרי" },
+  hive: [
+    // TODO: fill per client quiz structure
   ],
 };
 
@@ -106,13 +56,10 @@ export function getPersonalizedReasons(answers: Answer[], productId: string): st
   const rules = BULLET_RULES[productId] ?? [];
   const matched = rules.filter((r) => answers[r.q] === r.a).map((r) => r.text);
   const fallbacks: Record<string, string[]> = {
-    free_training: ["מושלם לנקודת הפתיחה שלך", "מאפשר להחליט בחכמה מה הצעד הבא", "אפס סיכון, מקסימום ערך"],
-    challenge:     ["שובר את חסם המצלמה במהירות", "פעולה מיידית - תוצאות תוך שבוע", "בנוי למי שרוצה לראות שינוי כבר עכשיו"],
-    workshop:      ["יום אחד שבונה אסטרטגיה שלמה", "פידבק אמיתי בזמן אמת", "ממוקד בכאב הספציפי שלך"],
-    course:        ["שיטה מלאה ומובנית בקצב שלך", "16 שיעורים שמכסים הכל", "ידע לכל החיים"],
-    strategy:      ["מפה מפורטת לצמיחה מותאמת לעסק שלך", "תשובות שרק מי שעשה את זה יכול לתת", "פגישה אחד על אחד עם הדר"],
-    premium:       ["16 סרטונים מקצועיים ביום אחד", "הצוות שלנו עושה את כל העבודה", "תוכן שמשדר את הרמה האמיתית שלך"],
-    partnership:   ["שותפות מלאה - לא עוד ספק חד-פעמי", "צמיחה שיטתית לטווח ארוך", "הצוות שלנו הופך לחלק מהצוות שלך"],
+    // TODO: fill with 3 generic reasons per product
+    free_training: ["ללא התחייבות", "פותח את הדלת", "20 דקות בלבד"],
+    challenge:     ["שבוע שמשנה", "עם קהילה תומכת", "ערבות החזר"],
+    hive:          ["שגרה קבועה", "קהילה שמבינה", "ניתן לביטול בכל עת"],
   };
   return [...new Set([...matched, ...(fallbacks[productId] ?? [])])].slice(0, 3);
 }

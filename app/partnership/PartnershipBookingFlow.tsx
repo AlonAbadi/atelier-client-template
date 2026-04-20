@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { BookingForm, type BookingSuccessData } from "@/app/strategy/book/BookingForm";
 import { ConsentCheckbox } from "@/components/landing/ConsentCheckbox";
+import { CLIENT } from "@/lib/client";
 import { getSessionUser } from "@/lib/quiz-session";
 
 function getCookie(name: string): string | undefined {
@@ -187,7 +188,7 @@ export function PartnershipBookingFlow({ bookedSlots }: Props) {
           {booked?.date} · {booked?.time}
         </p>
         <p className="text-sm mt-1" style={{ color: "#9E9990" }}>
-          אישור ישלח לאימייל. הדר תקרא את הפרטים שלך לפני השיחה.
+          אישור ישלח לאימייל. {CLIENT.name} תקרא את הפרטים שלך לפני השיחה.
         </p>
       </div>
 

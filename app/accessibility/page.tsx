@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CLIENT } from "@/lib/client";
 
 export const metadata: Metadata = {
-  title: "הצהרת נגישות | הדר דנן",
-  description: "הצהרת נגישות האתר של הדר דנן בע״מ - עמידה בתקן ישראלי 5568 ו-WCAG 2.1 AA",
+  title: `הצהרת נגישות | ${CLIENT.name}`,
+  description: `הצהרת נגישות האתר של ${CLIENT.legal_name} - עמידה בתקן ישראלי 5568 ו-WCAG 2.1 AA`,
 };
 
 export default function AccessibilityPage() {
@@ -33,7 +34,7 @@ export default function AccessibilityPage() {
               { term: "תקן",            def: "ת״י 5568 / WCAG 2.1" },
               { term: "רמת עמידה",      def: "AA" },
               { term: "תאריך הנגשה",   def: "מרץ 2026" },
-              { term: "גורם מנגיש",     def: "הדר דנן בע״מ" },
+              { term: "גורם מנגיש",     def: CLIENT.legal_name },
             ].map(({ term, def }) => (
               <div key={term} className="flex gap-4 items-baseline pb-3" style={{ borderBottom: "1px solid #2C323E" }}>
                 <dt className="text-sm font-semibold w-36 flex-shrink-0" style={{ color: "#9E9990" }}>{term}</dt>
@@ -124,38 +125,27 @@ export default function AccessibilityPage() {
           </p>
           <dl className="flex flex-col gap-2" style={{ color: "#EDE9E1" }}>
             <div className="flex gap-3">
-              <dt className="font-semibold flex-shrink-0">אימייל נגישות:</dt>
+              <dt className="font-semibold flex-shrink-0">אימייל:</dt>
               <dd>
                 <a
-                  href="mailto:נגישות@beegood.online"
+                  href={`mailto:${CLIENT.email.from_email}`}
                   className="underline hover:opacity-70 transition"
                   style={{ color: "#C9964A" }}
                 >
-                  נגישות@beegood.online
-                </a>
-              </dd>
-            </div>
-            <div className="flex gap-3">
-              <dt className="font-semibold flex-shrink-0">אימייל כללי:</dt>
-              <dd>
-                <a
-                  href="mailto:hadar@beegood.online"
-                  className="underline hover:opacity-70 transition"
-                  style={{ color: "#C9964A" }}
-                >
-                  hadar@beegood.online
+                  {CLIENT.email.from_email}
                 </a>
               </dd>
             </div>
             <div className="flex gap-3">
               <dt className="font-semibold flex-shrink-0">טלפון:</dt>
               <dd>
+                {/* TODO: add phone number to CLIENT config */}
                 <a
-                  href="tel:+972539566961"
+                  href={`https://wa.me/${CLIENT.whatsapp}`}
                   className="underline hover:opacity-70 transition"
                   style={{ color: "#C9964A" }}
                 >
-                  053-9566961
+                  WhatsApp
                 </a>
               </dd>
             </div>

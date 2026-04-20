@@ -157,8 +157,8 @@ function base(content: string): string {
       ${content}
     </div>
     <div class="footer">
-      <p>קיבלת אימייל זה כי נרשמת ב-<a href="${APP_URL}">beegood.online</a></p>
-      <p>הדר דנן בע״מ · ישראל</p>
+      <p>קיבלת אימייל זה כי נרשמת ב-<a href="${APP_URL}">${APP_URL}</a></p>
+      <p>${CLIENT.legal_name} · ישראל</p>
       <p style="margin-top:8px">
         <a href="${APP_URL}/unsubscribe">הסר אותי מרשימת התפוצה</a>
       </p>
@@ -192,7 +192,7 @@ function welcome(ctx: EmailTemplateContext): RenderedEmail {
     subject: `ברוכ/ה הבא/ה ${firstName}! ההדרכה החינמית מחכה לך 🎬`,
     html: base(`
       <div class="header">
-        <div class="header-logo">הדר דנן</div>
+        <div class="header-logo">${FROM_NAME}</div>
         <h1>ברוכ/ה הבא/ה, <span class="header-accent">${firstName}</span> 🎉</h1>
         <p>ביצעת את הצעד הראשון - ועכשיו הגיע הזמן לפעולה</p>
       </div>
@@ -232,7 +232,7 @@ function followup24h(ctx: EmailTemplateContext): RenderedEmail {
     subject: `${firstName}, יש לי הצעה בשבילך - ₪197 שיכולים לשנות הכל`,
     html: base(`
       <div class="header">
-        <div class="header-logo">הדר דנן</div>
+        <div class="header-logo">${FROM_NAME}</div>
         <h1>הצעד הבא שלך, <span class="header-accent">${firstName}</span></h1>
         <p>ההדרכה החינמית היא רק ההתחלה</p>
       </div>
@@ -275,7 +275,7 @@ function challengeAccess(ctx: EmailTemplateContext): RenderedEmail {
     subject: `${firstName} - הגישה שלך לצ׳אלנג׳ 7 הימים מוכנה! 🚀`,
     html: base(`
       <div class="header">
-        <div class="header-logo">הדר דנן · אתגר 7 הימים</div>
+        <div class="header-logo">${FROM_NAME} · אתגר 7 הימים</div>
         <h1>ברוכ/ה הבא/ה לצ׳אלנג׳, <span class="header-accent">${firstName}</span>!</h1>
         <p>הרכישה אושרה - הנה כל מה שצריך כדי להתחיל</p>
       </div>
@@ -325,7 +325,7 @@ function challengeUpsellWorkshop(ctx: EmailTemplateContext): RenderedEmail {
     subject: `${firstName} - יום 7 הסתיים. מה עכשיו? 🎯`,
     html: base(`
       <div class="header">
-        <div class="header-logo">הדר דנן</div>
+        <div class="header-logo">${FROM_NAME}</div>
         <h1>שבוע שלם, <span class="header-accent">${firstName}</span>! 🏆</h1>
         <p>סיימת את הצ׳אלנג׳ - הגיע הזמן לשלב הבא</p>
       </div>
@@ -369,7 +369,7 @@ function workshopConfirmation(ctx: EmailTemplateContext): RenderedEmail {
     subject: `${firstName} - ההרשמה לסדנה אושרה! הנה כל הפרטים 📅`,
     html: base(`
       <div class="header">
-        <div class="header-logo">הדר דנן · סדנה יום אחד</div>
+        <div class="header-logo">${FROM_NAME} · סדנה יום אחד</div>
         <h1>ההרשמה אושרה, <span class="header-accent">${firstName}</span>!</h1>
         <p>הנה כל מה שצריך לדעת לפני הסדנה</p>
       </div>
@@ -412,7 +412,7 @@ function workshopUpsellStrategy(ctx: EmailTemplateContext): RenderedEmail {
     subject: `${firstName} - שבוע אחרי הסדנה. הצעד הבא שלך 🎓`,
     html: base(`
       <div class="header">
-        <div class="header-logo">הדר דנן</div>
+        <div class="header-logo">${FROM_NAME}</div>
         <h1>שבוע עבר, <span class="header-accent">${firstName}</span></h1>
         <p>הגיע הזמן לעמיק את הידע</p>
       </div>
@@ -457,7 +457,7 @@ function courseAccess(ctx: EmailTemplateContext): RenderedEmail {
     subject: `${firstName} - הגישה לקורס מוכנה! 16 שיעורים מחכים לך 🎓`,
     html: base(`
       <div class="header">
-        <div class="header-logo">הדר דנן</div>
+        <div class="header-logo">${FROM_NAME}</div>
         <h1>ברוכ/ה הבא/ה לקורס, <span class="header-accent">${firstName}</span>! 🎉</h1>
         <p>16 שיעורים · 8 שעות · שיטה מלאה</p>
       </div>
@@ -502,7 +502,7 @@ function courseUpsellStrategy(ctx: EmailTemplateContext): RenderedEmail {
     subject: `${firstName} - שבוע בקורס. מוכן/ה לצעד הבא? 🚀`,
     html: base(`
       <div class="header">
-        <div class="header-logo">הדר דנן</div>
+        <div class="header-logo">${FROM_NAME}</div>
         <h1>שבוע בקורס, <span class="header-accent">${firstName}</span></h1>
         <p>הגיע הזמן לבנות את האסטרטגיה שלך</p>
       </div>
@@ -564,7 +564,7 @@ function cartAbandon1h(ctx: EmailTemplateContext): RenderedEmail {
     subject: `${firstName}, שכחת משהו... 🛒`,
     html: base(`
       <div class="header">
-        <div class="header-logo">הדר דנן</div>
+        <div class="header-logo">${FROM_NAME}</div>
         <h1>העגלה שלך מחכה, <span class="header-accent">${firstName}</span></h1>
         <p>עצרת בדרך - בוא נסיים את זה</p>
       </div>
@@ -612,7 +612,7 @@ function cartAbandon24h(ctx: EmailTemplateContext): RenderedEmail {
     subject: `${firstName} - אחרון. קוד הנחה 10% בפנים 🎁`,
     html: base(`
       <div class="header">
-        <div class="header-logo">הדר דנן</div>
+        <div class="header-logo">${FROM_NAME}</div>
         <h1>ההזדמנות הזאת נסגרת הלילה</h1>
         <p>אחרון אחרון - יש לי מתנה בשבילך</p>
       </div>
@@ -623,7 +623,7 @@ function cartAbandon24h(ctx: EmailTemplateContext): RenderedEmail {
 
         <div class="coupon-box">
           <p>קוד הנחה 10% - בתוקף עד חצות:</p>
-          <p class="coupon-code">HADAR10</p>
+          <p class="coupon-code">SAVE10</p>
         </div>
 
         <p>הזן את הקוד בהרשמה וקבל 10% הנחה מיידית.</p>
@@ -649,7 +649,7 @@ function reengagement(ctx: EmailTemplateContext): RenderedEmail {
     subject: `${firstName}, התגעגענו אליך 👋`,
     html: base(`
       <div class="header">
-        <div class="header-logo">הדר דנן</div>
+        <div class="header-logo">${FROM_NAME}</div>
         <h1>היי <span class="header-accent">${firstName}</span>, הכל בסדר?</h1>
         <p>שלושה ימים עברו מאז ההרשמה - בדקנו מה קרה</p>
       </div>
@@ -691,7 +691,7 @@ function followup72h(ctx: EmailTemplateContext): RenderedEmail {
     subject: `3 ימים ואתה עדיין כאן, ${firstName} - זה אומר משהו`,
     html: base(`
       <div class="header">
-        <div class="header-logo">הדר דנן</div>
+        <div class="header-logo">${FROM_NAME}</div>
         <h1>אתה לא כמו כולם, <span class="header-accent">${firstName}</span></h1>
         <p>רוב האנשים נרשמים ונעלמים. אתה נשארת.</p>
       </div>
@@ -718,7 +718,7 @@ function purchaseConfirmation(ctx: EmailTemplateContext): RenderedEmail {
     subject: `✅ הרכישה אושרה - ברוכ/ה הבא/ה, ${firstName}!`,
     html: base(`
       <div class="header">
-        <div class="header-logo">הדר דנן</div>
+        <div class="header-logo">${FROM_NAME}</div>
         <h1>הרכישה אושרה! 🎉</h1>
         <p>תודה ${firstName} - ביצעת השקעה חכמה</p>
       </div>
@@ -743,7 +743,7 @@ function postPurchase48h(ctx: EmailTemplateContext): RenderedEmail {
     subject: `${firstName}, יומיים אחרי - איך מתקדמים? + בונוס בפנים`,
     html: base(`
       <div class="header">
-        <div class="header-logo">הדר דנן</div>
+        <div class="header-logo">${FROM_NAME}</div>
         <h1>יומיים אחרי - מה קרה? 💪</h1>
         <p>בדיקת מצב + בונוס בלעדי</p>
       </div>
@@ -781,7 +781,7 @@ function bookingConfirmation(ctx: EmailTemplateContext): RenderedEmail {
     subject: `✅ הפגישה נקבעה! ${slotFormatted} בשעה ${slotTime}`,
     html: base(`
       <div class="header">
-        <div class="header-logo">הדר דנן</div>
+        <div class="header-logo">${FROM_NAME}</div>
         <h1>הפגישה קבועה, <span class="header-accent">${firstName}</span>! 🎯</h1>
         <p>פגישת אסטרטגיה אישית · 90 דקות</p>
       </div>
@@ -833,7 +833,7 @@ function premiumLeadConfirmation(ctx: EmailTemplateContext): RenderedEmail {
     subject: `${firstName}, קיבלנו את הבקשה - ניצור קשר תוך 24 שעות`,
     html: base(`
       <div class="header">
-        <div class="header-logo">הדר דנן</div>
+        <div class="header-logo">${FROM_NAME}</div>
         <h1>הבקשה שלך התקבלה, <span class="header-accent">${firstName}</span> ✨</h1>
         <p>יום צילום מקצועי + אסטרטגיה תוכן</p>
       </div>
@@ -887,7 +887,7 @@ function partnershipConfirmation(ctx: EmailTemplateContext): RenderedEmail {
     subject: `${firstName}, קיבלנו את הבקשה שלך - הדר תחזור אליך בקרוב`,
     html: base(`
       <div class="header" style="background:#080808;border-bottom:2px solid rgba(201,168,76,0.4)">
-        <div class="header-logo" style="color:#C9A84C">הדר דנן · שותפות אסטרטגית</div>
+        <div class="header-logo" style="color:#C9A84C">${FROM_NAME} · שותפות אסטרטגית</div>
         <h1 style="color:#ffffff">קיבלנו, <span style="color:#C9A84C">${firstName}</span> ✨</h1>
         <p style="color:rgba(255,255,255,0.6)">הדר תקרא את זה אישית ותחזור אליך</p>
       </div>
@@ -935,7 +935,7 @@ function hiveWelcome(ctx: EmailTemplateContext): RenderedEmail {
     subject: "ברוך הבא לכוורת 🐝",
     html: base(`
       <div class="header">
-        <div class="header-logo">הדר דנן · הכוורת</div>
+        <div class="header-logo">${FROM_NAME} · הכוורת</div>
         <h1>🐝 ברוך הבא לכוורת, <span class="header-accent">${firstName}</span></h1>
         <p>אתה עכשיו חלק ממשהו מיוחד</p>
       </div>
@@ -967,7 +967,7 @@ function hiveWelcome(ctx: EmailTemplateContext): RenderedEmail {
 
         <hr class="divider"/>
         <p style="font-size:14px;color:#6b7280">
-          לביטול מנוי: <a href="mailto:hive@beegood.online" style="color:#6b7280">hive@beegood.online</a> או דרך האזור האישי
+          לביטול מנוי: השב לאימייל הזה או דרך האזור האישי (/my)
         </p>
       </div>
     `),
@@ -981,7 +981,7 @@ function hiveDay7(ctx: EmailTemplateContext): RenderedEmail {
     subject: "שבוע בכוורת - איך הולך? 🐝",
     html: base(`
       <div class="header">
-        <div class="header-logo">הדר דנן · הכוורת</div>
+        <div class="header-logo">${FROM_NAME} · הכוורת</div>
         <h1>🐝 שבוע בכוורת, <span class="header-accent">${firstName}</span></h1>
         <p>מקווים שאתה נהנה</p>
       </div>
@@ -1013,7 +1013,7 @@ function hiveCancelled(ctx: EmailTemplateContext): RenderedEmail {
     subject: "אישור ביטול מנוי הכוורת",
     html: base(`
       <div class="header">
-        <div class="header-logo">הדר דנן · הכוורת</div>
+        <div class="header-logo">${FROM_NAME} · הכוורת</div>
         <h1>אישור ביטול מנוי הכוורת</h1>
         <p>שלום ${firstName}, קיבלנו את בקשתך</p>
       </div>
@@ -1052,7 +1052,7 @@ export function adminAlert(ctx: {
     subject: `🚨 [Marketing OS] Job failed permanently - ${ctx.jobType}`,
     html: base(`
       <div class="header" style="background:#7f1d1d">
-        <div class="header-logo" style="color:#fca5a5">הדר דנן · Admin Alert</div>
+        <div class="header-logo" style="color:#fca5a5">${FROM_NAME} · Admin Alert</div>
         <h1>⚠️ Job Failed Permanently</h1>
         <p>דרושה בדיקה ידנית</p>
       </div>

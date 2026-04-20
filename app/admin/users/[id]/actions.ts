@@ -3,6 +3,7 @@
 import { createServerClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
 import type { UserStatus } from "@/lib/supabase/types";
+import { CLIENT } from "@/lib/client";
 
 export async function changeUserStatus(userId: string, status: UserStatus) {
   const supabase = createServerClient();
@@ -40,7 +41,7 @@ export async function sendManualEmail(userId: string, templateKey: string) {
     reengagement:              "התגעגענו אליך",
     booking_confirmation:      "הפגישה שלך נקבעה",
     premium_lead_confirmation:  "קיבלנו את הבקשה - ניצור קשר תוך 24 שעות",
-    partnership_confirmation:   "קיבלנו את הבקשה שלך - הדר תחזור אליך בקרוב",
+    partnership_confirmation:   `קיבלנו את הבקשה שלך - ${CLIENT.name} תחזור אליך בקרוב`,
   };
 
   await supabase.from("jobs").insert({
@@ -49,7 +50,7 @@ export async function sendManualEmail(userId: string, templateKey: string) {
       user_id:      userId,
       email:        user.email,
       name:         user.name ?? "",
-      subject:      subjects[templateKey] ?? "הודעה מהדר דנן",
+      subject:      subjects[templateKey] ?? `הודעה מ${CLIENT.name}`,
       template_key: templateKey,
     },
     run_at: new Date().toISOString(),

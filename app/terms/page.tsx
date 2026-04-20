@@ -1,7 +1,8 @@
 import Link from "next/link";
+import { CLIENT } from "@/lib/client";
 
 export const metadata = {
-  title: "תנאי שימוש | הדר דנן",
+  title: `תנאי שימוש | ${CLIENT.name}`,
 };
 
 export default function TermsPage() {
@@ -21,7 +22,7 @@ export default function TermsPage() {
 
         <Section title="1. הסכמה לתנאים">
           <p>
-            השימוש באתר beegood.online ובשירותים המוצעים על ידי הדר דנן בע״מ ("החברה") מהווה הסכמה מלאה לתנאי שימוש אלה. אם אינך מסכים לתנאים, אנא הפסק את השימוש באתר.
+            השימוש באתר {CLIENT.domain} ובשירותים המוצעים על ידי {CLIENT.legal_name} (&quot;החברה&quot;) מהווה הסכמה מלאה לתנאי שימוש אלה. אם אינך מסכים לתנאים, אנא הפסק את השימוש באתר.
           </p>
         </Section>
 
@@ -31,7 +32,7 @@ export default function TermsPage() {
             <li><B>אתגר 7 ימים</B> - תוכן וידאו ל-7 ימים, פורמט Reels</li>
             <li><B>סדנה יום אחד</B> - סדנה פיזית או מקוונת</li>
             <li><B>קורס דיגיטלי</B> - 16 שיעורי וידאו ב-8 מודולים</li>
-            <li><B>פגישת אסטרטגיה</B> - פגישה אישית עם הדר דנן</li>
+            <li><B>פגישת אסטרטגיה</B> - פגישה אישית עם {CLIENT.name}</li>
             <li><B>פרימיום</B> - ליווי אישי מורחב</li>
             <li><B>הכוורת</B> - מנוי קהילה חודשי בשלוש רמות (Starter, Pro, Elite)</li>
           </ul>
@@ -106,7 +107,7 @@ export default function TermsPage() {
 
         <Section title="6. קניין רוחני">
           <p>
-            כל התכנים באתר, לרבות טקסטים, תמונות, סרטונים, מצגות, שם המותג "הדר דנן", "Bee Good" ו-"TrueSignal", הינם רכושה הבלעדי של החברה ומוגנים בזכויות יוצרים ובדיני קניין רוחני. אין להעתיק, לשכפל, להפיץ או לעשות כל שימוש מסחרי בתכנים ללא אישור מפורש בכתב.
+            כל התכנים באתר, לרבות טקסטים, תמונות, סרטונים ומצגות, הינם רכושה הבלעדי של {CLIENT.legal_name} ומוגנים בזכויות יוצרים ובדיני קניין רוחני. אין להעתיק, לשכפל, להפיץ או לעשות כל שימוש מסחרי בתכנים ללא אישור מפורש בכתב.
           </p>
         </Section>
 
@@ -129,11 +130,10 @@ export default function TermsPage() {
         </Section>
 
         <Section title="10. יצירת קשר">
-          <p>הדר דנן בע״מ | ח.פ. 516791555</p>
-          <p>כתובת: החילזון 5, רמת גן</p>
-          <p>טלפון: 053-9566961</p>
-          <p>אימייל: billing@hadardanan.co.il</p>
-          <p>אתר: beegood.online</p>
+          <p>{CLIENT.legal_name} | ח.פ. {CLIENT.company_id}</p>
+          {/* TODO: add physical address to CLIENT config if needed */}
+          <p>אימייל: {CLIENT.email.from_email}</p>
+          <p>אתר: {CLIENT.domain}</p>
         </Section>
 
         <div style={{ marginTop: 48, paddingTop: 24, borderTop: "1px solid #2C323E", textAlign: "center", fontSize: 13 }}>

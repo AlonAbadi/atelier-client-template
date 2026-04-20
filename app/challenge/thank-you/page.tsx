@@ -1,10 +1,11 @@
+import { CLIENT } from "@/lib/client";
 import type { Metadata } from "next";
 import Link from "next/link";
 
 const WHATSAPP_URL = "https://chat.whatsapp.com/KNS9JEHWdjYFVf0uJdZPB7";
 
 export const metadata: Metadata = {
-  title: "תודה על ההצטרפות לאתגר | הדר דנן",
+  title: `תודה על ההצטרפות לאתגר | ${CLIENT.name}`,
   description: "ההרשמה לאתגר 7 הימים הושלמה בהצלחה. בדקי את המייל שלך לפרטים נוספים.",
   robots: { index: false, follow: false },
 };

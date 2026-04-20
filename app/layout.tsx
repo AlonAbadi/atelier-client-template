@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   openGraph: {
     type:        "website",
     locale:      "he_IL",
-    siteName:    `${CLIENT.name} | BeeGood`,
+    siteName:    CLIENT.name,
     title:       TITLE,
     description: DESCRIPTION,
     url:         APP_URL,
@@ -65,7 +65,7 @@ export default function RootLayout({
       dir="rtl"
       className={`${assistant.variable} h-full`}
     >
-      <link rel="preload" href="/hadar1.jpg" as="image" type="image/jpeg" />
+      {/* TODO: add preload link for client hero image once known */}
       <body className="min-h-full flex flex-col font-assistant antialiased" style={{ background: "#101520", color: "#EDE9E1" }}>
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-L76SZ1SCS1" strategy="afterInteractive" />
         <Script id="gtag-init" strategy="afterInteractive">{`

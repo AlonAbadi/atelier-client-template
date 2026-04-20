@@ -17,7 +17,7 @@ export const COURSE_MODULES: Module[] = [
     id: 1,
     title: "למה אתה באמת שונה",
     lessons: [
-      { id: 1,  videoId: "PLACEHOLDER", title: 'TrueSignal שלך',    duration: 28, description: "נגדיר את ה-TrueSignal הייחודי שלך - מה באמת מבדל אותך מהמתחרים ולמה הלקוחות בוחרים דווקא בך." },
+      { id: 1,  videoId: "PLACEHOLDER", title: "הבידול שלך",         duration: 28, description: "נגדיר את הבידול הייחודי שלך - מה באמת מבדל אותך מהמתחרים ולמה הלקוחות בוחרים דווקא בך." },
       { id: 2,  videoId: "PLACEHOLDER", title: "הבידול בשטח",       duration: 24, description: "נראה איך הבידול שלך מתבטא בפועל בשיחות מכירה, בתוכן ובאופן שבו הלקוחות מדברים עליך." },
     ],
   },

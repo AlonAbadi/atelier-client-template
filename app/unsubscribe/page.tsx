@@ -1,8 +1,9 @@
+import { CLIENT } from "@/lib/client";
 import type { Metadata } from "next";
 import { UnsubscribeForm } from "./UnsubscribeForm";
 
 export const metadata: Metadata = {
-  title: "ביטול הסכמה לדיוור | הדר דנן",
+  title: `ביטול הסכמה לדיוור | ${CLIENT.name}`,
   robots: { index: false },
 };
 

@@ -1,7 +1,8 @@
 import Link from "next/link";
+import { CLIENT } from "@/lib/client";
 
 export const metadata = {
-  title: "מדיניות פרטיות | הדר דנן",
+  title: `מדיניות פרטיות | ${CLIENT.name}`,
 };
 
 export default function PrivacyPage() {
@@ -21,7 +22,7 @@ export default function PrivacyPage() {
 
         <Section title="1. כללי">
           <p>
-            הדר דנן בע״מ, המפעילה את האתר beegood.online ("החברה", "אנחנו", "אנו"), מחויבת להגן על פרטיותך. מדיניות זו מסבירה אילו מידע אנחנו אוספים, כיצד אנחנו משתמשים בו, עם מי אנחנו משתפים אותו, ומהן זכויותיך לגביו. השימוש באתר ובשירותים מהווה הסכמה למדיניות פרטיות זו.
+            {CLIENT.legal_name}, המפעילה את האתר {CLIENT.domain} (&quot;החברה&quot;, &quot;אנחנו&quot;, &quot;אנו&quot;), מחויבת להגן על פרטיותך. מדיניות זו מסבירה אילו מידע אנחנו אוספים, כיצד אנחנו משתמשים בו, עם מי אנחנו משתפים אותו, ומהן זכויותיך לגביו. השימוש באתר ובשירותים מהווה הסכמה למדיניות פרטיות זו.
           </p>
         </Section>
 
@@ -149,11 +150,10 @@ export default function PrivacyPage() {
         </Section>
 
         <Section title="11. יצירת קשר">
-          <p>הדר דנן בע״מ | ח.פ. 516791555</p>
-          <p>כתובת: החילזון 5, רמת גן</p>
-          <p>טלפון: 053-9566961</p>
-          <p>אימייל: billing@hadardanan.co.il</p>
-          <p>אתר: beegood.online</p>
+          <p>{CLIENT.legal_name} | ח.פ. {CLIENT.company_id}</p>
+          {/* TODO: add physical address to CLIENT config if needed */}
+          <p>אימייל: {CLIENT.email.from_email}</p>
+          <p>אתר: {CLIENT.domain}</p>
         </Section>
 
         <div style={{ marginTop: 48, paddingTop: 24, borderTop: "1px solid #2C323E", textAlign: "center", fontSize: 13 }}>

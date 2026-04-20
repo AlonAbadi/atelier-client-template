@@ -4,7 +4,6 @@ import type { ReactNode } from "react";
 import { createServerClient } from "@/lib/supabase/server";
 import { AdminUserActions } from "./AdminUserActions";
 import { NotesSection } from "./NotesSection";
-import { TrueSignalCard } from "./TrueSignalCard";
 
 export const dynamic = "force-dynamic";
 
@@ -481,9 +480,6 @@ export default async function AdminUserPage({ params }: { params: Promise<{ id: 
 
         <div style={{ padding: "20px 24px", display: "flex", flexDirection: "column", gap: 14 }}>
 
-          {/* ── TrueSignal diagnosis ──────────────────────────────────── */}
-          <TrueSignalCard userId={user.id} />
-
           {/* ── Alerts ────────────────────────────────────────────────── */}
           {hasCart && (
             <div style={{
@@ -508,7 +504,7 @@ export default async function AdminUserPage({ params }: { params: Promise<{ id: 
               borderRight: "3px solid #7F77DD", borderRadius: 10, padding: "12px 16px",
             }}>
               <div style={{ fontSize: 14, fontWeight: 700, color: "#7F77DD", marginBottom: 4 }}>
-                ליד פרימיום פוטנציאלי - לידיעת הדר ואלון
+                ליד פרימיום פוטנציאלי - ליד פוטנציאלי — יש לבדוק
               </div>
               <div style={{ fontSize: 13, color: "#9E9990" }}>
                 ציון פרימיום גבוה. שווה לבדוק התאמה לפני הצעת מוצר אחר.
@@ -522,7 +518,7 @@ export default async function AdminUserPage({ params }: { params: Promise<{ id: 
               borderRight: "3px solid #7F77DD", borderRadius: 10, padding: "12px 16px",
             }}>
               <div style={{ fontSize: 14, fontWeight: 700, color: "#7F77DD", marginBottom: 4 }}>
-                ליד שותפות פוטנציאלי - לידיעת הדר ואלון
+                ליד שותפות פוטנציאלי - ליד פוטנציאלי — יש לבדוק
               </div>
               <div style={{ fontSize: 13, color: "#9E9990" }}>
                 ציון שותפות גבוה. שווה לבדוק התאמה לפני הצעת מוצר אחר.

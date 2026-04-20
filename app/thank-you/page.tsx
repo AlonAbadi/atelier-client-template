@@ -1,12 +1,13 @@
 import Link from "next/link";
+import { CLIENT } from "@/lib/client";
 
 export const metadata = {
-  title: "נרשמת בהצלחה | הדר דנן",
+  title: `נרשמת בהצלחה | ${CLIENT.name}`,
 };
 
+const APP_URL     = process.env.NEXT_PUBLIC_APP_URL ?? `https://${CLIENT.domain}`;
 const WHATSAPP_TEXT = encodeURIComponent(
-  "הצטרפתי להדרכה החינמית של הדר דנן - למד איך לייצר סרטונים שמביאים לקוחות. כדאי לך להצטרף גם: " +
-    (process.env.NEXT_PUBLIC_APP_URL ?? "https://hadar-danan.vercel.app")
+  `הצטרפתי להדרכה החינמית של ${CLIENT.name}. כדאי לך להצטרף גם: ${APP_URL}`
 );
 
 export default function ThankYouPage() {
@@ -18,7 +19,7 @@ export default function ThankYouPage() {
     >
       {/* Nav */}
       <header className="px-6 py-4" style={{ borderBottom: "1px solid #2C323E", background: "rgba(16,21,32,0.9)" }}>
-        <span className="font-black text-xl" style={{ color: "#C9964A" }}>הדר דנן</span>
+        <span className="font-black text-xl" style={{ color: CLIENT.colors.accent }}>{CLIENT.name}</span>
       </header>
 
       <div className="flex-1 flex items-center justify-center px-4 py-16">

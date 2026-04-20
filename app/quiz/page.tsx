@@ -1,3 +1,4 @@
+import { CLIENT } from "@/lib/client";
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
 import { createServerClient as createSSRClient } from "@supabase/ssr";
@@ -6,7 +7,7 @@ import { QuizClient } from "./QuizClient";
 import type { Database } from "@/lib/supabase/types";
 
 export const metadata: Metadata = {
-  title: "גלה את הצעד הנכון עבורך | הדר דנן",
+  title: `גלה את הצעד הנכון עבורך | ${CLIENT.name}`,
   description: "6 שאלות. 2 דקות. תשובה מדויקת על הצעד הנכון לשיווק העסק שלך.",
   alternates: { canonical: "/quiz" },
 };

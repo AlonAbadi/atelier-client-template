@@ -6,7 +6,6 @@ import { saveQuizSession } from "@/lib/quiz-session";
 import { buildNarrative } from "@/lib/quiz-narrative";
 import {
   type Answer,
-  type BulletRule,
   PRODUCT_IMAGE,
   PRODUCT_META,
   PRODUCT_DESC,
@@ -28,87 +27,54 @@ type Product = {
   price: string;
 };
 
-// ── Questions ────────────────────────────────────────────────────
+// ── Questions ─────────────────────────────────────────────────────
+// TODO: replace with real questions per client (3–6 questions recommended).
+// Each option id must be "A"|"B"|"C"|"D". subtitle is optional (null = hidden).
 
 const QUESTIONS = [
   {
     id: "q1",
-    title: "איפה העסק שלך עכשיו?",
-    subtitle: "ענה בכנות - זה יעזור לנו למצוא את הצעד הנכון",
+    title: "שאלה 1 — TODO: כתוב כאן את השאלה הראשונה",
+    subtitle: "הסבר קצר אופציונלי מתחת לשאלה",
     options: [
-      { id: "A", text: "רק מתחיל - עדיין בונה את הבסיס" },
-      { id: "B", text: "יש לי עסק פעיל - רוצה יותר לקוחות" },
-      { id: "C", text: "יש לי עסק מבוסס - רוצה לצמוח בגדול" },
-      { id: "D", text: "חברה / מותג - מחפשים שותף אסטרטגי" },
+      { id: "A", text: "תשובה א׳ — TODO" },
+      { id: "B", text: "תשובה ב׳ — TODO" },
+      { id: "C", text: "תשובה ג׳ — TODO" },
+      { id: "D", text: "תשובה ד׳ — TODO" },
     ],
   },
   {
     id: "q2",
-    title: "מה הכי עוצר אותך בשיווק?",
+    title: "שאלה 2 — TODO",
     subtitle: null,
     options: [
-      { id: "A", text: "לא יודע מה לומר מול המצלמה" },
-      { id: "B", text: "מייצר תוכן אבל לא רואה תוצאות" },
-      { id: "C", text: "אין לי זמן לעשות הכל לבד" },
-      { id: "D", text: "השיווק לא משקף את האיכות האמיתית שלי" },
+      { id: "A", text: "תשובה א׳ — TODO" },
+      { id: "B", text: "תשובה ב׳ — TODO" },
+      { id: "C", text: "תשובה ג׳ — TODO" },
+      { id: "D", text: "תשובה ד׳ — TODO" },
     ],
   },
   {
     id: "q3",
-    title: "מה הקשר שלך לתוכן כרגע?",
+    title: "שאלה 3 — TODO",
     subtitle: null,
     options: [
-      { id: "A", text: "לא מייצר תוכן בכלל" },
-      { id: "B", text: "מנסה לפה ולשם, לא עקבי" },
-      { id: "C", text: "מייצר תוכן אבל לא מרוצה מהאיכות" },
-      { id: "D", text: "רוצה ליצור תוכן ברמה מקצועית גבוהה" },
-    ],
-  },
-  {
-    id: "q4",
-    title: "איך אתה לומד הכי טוב?",
-    subtitle: null,
-    options: [
-      { id: "A", text: "סרטון קצר + מיידי לפעולה" },
-      { id: "B", text: "קורס מובנה שאוכל לעבור בקצב שלי" },
-      { id: "C", text: "ליווי אישי עם פידבק אמיתי" },
-      { id: "D", text: "מישהו שפשוט עושה את זה בשבילי" },
-    ],
-  },
-  {
-    id: "q5",
-    title: "מה רמת הדחיפות שלך?",
-    subtitle: null,
-    options: [
-      { id: "A", text: "רוצה להבין לפני שאני מחליט" },
-      { id: "B", text: "מוכן להתחיל בקרוב - שבוע-שבועיים" },
-      { id: "C", text: "דחוף - רוצה תוצאות עכשיו" },
-      { id: "D", text: "יש לי פרויקט ספציפי שצריך פתרון מהיר" },
-    ],
-  },
-  {
-    id: "q6",
-    title: "מה ההשקעה שנוחה לך?",
-    subtitle: null,
-    options: [
-      { id: "A", text: "מעדיף להתחיל חינם ולראות" },
-      { id: "B", text: "עד 2,000 ש\"ח - השקעה נוחה" },
-      { id: "C", text: "2,000-15,000 ש\"ח - מוכן להשקיע ברצינות" },
-      { id: "D", text: "מעל 15,000 ש\"ח - תוצאות חשובות יותר מעלות" },
+      { id: "A", text: "תשובה א׳ — TODO" },
+      { id: "B", text: "תשובה ב׳ — TODO" },
+      { id: "C", text: "תשובה ג׳ — TODO" },
+      { id: "D", text: "תשובה ד׳ — TODO" },
     ],
   },
 ];
 
-// ── Products ─────────────────────────────────────────────────────
+// ── Products ──────────────────────────────────────────────────────
+// TODO: list only the products active in CLIENT.modules.
+// id must match keys in PRODUCT_IMAGE / PRODUCT_META / PRODUCT_DESC in quiz-config.ts.
 
 const PRODUCTS: Product[] = [
-  { id: "free_training", href: "/training",    name: "הדרכה חינמית",      price: "חינם" },
-  { id: "challenge",     href: "/challenge",   name: "אתגר 7 הימים",      price: "197 ש\"ח" },
-  { id: "workshop",      href: "/workshop",    name: "סדנה יום אחד",      price: "1,080 ש\"ח" },
-  { id: "course",        href: "/course",      name: "קורס דיגיטלי",      price: "1,800 ש\"ח" },
-  { id: "strategy",      href: "/strategy",    name: "פגישת אסטרטגיה",    price: "4,000 ש\"ח" },
-  { id: "premium",       href: "/premium",     name: "יום צילום פרמיום",  price: "14,000 ש\"ח" },
-  { id: "partnership",   href: "/partnership", name: "שותפות אסטרטגית",   price: "10,000-30,000 ש\"ח" },
+  { id: "free_training", href: "/training",  name: "הדרכה חינמית", price: "חינם" },
+  { id: "challenge",     href: "/challenge", name: "אתגר",          price: "TODO ש\"ח" },
+  { id: "hive",          href: "/hive",      name: "קהילה",         price: "TODO ש\"ח/חודש" },
 ];
 
 // ── Match score scaling ───────────────────────────────────────────
@@ -124,24 +90,24 @@ function scaleSecondary(rawScore: number): number {
 }
 
 // ── Scoring ───────────────────────────────────────────────────────
+// SCORES[questionId][answer] = array of scores, one per PRODUCT (same order as PRODUCTS array).
+// MAX_SCORE = max points a single product can accumulate across all questions.
+// TODO: fill in per client after defining QUESTIONS and PRODUCTS.
 
 const SCORES: Record<string, Record<Answer, number[]>> = {
-  q1: { A: [3,3,1,0,0,0,0], B: [1,2,3,2,1,0,0], C: [0,0,1,3,3,2,1], D: [0,0,0,0,2,3,3] },
-  q2: { A: [3,3,2,1,0,0,0], B: [1,2,3,2,1,0,0], C: [0,0,1,1,2,3,2], D: [0,1,2,2,3,2,1] },
-  q3: { A: [3,2,1,0,0,0,0], B: [1,3,2,1,0,0,0], C: [0,1,2,3,2,1,0], D: [0,0,0,1,2,3,3] },
-  q4: { A: [2,2,1,3,0,0,0], B: [1,3,3,1,0,0,0], C: [0,0,1,1,3,2,1], D: [0,0,0,0,1,3,3] },
-  q5: { A: [3,2,1,1,0,0,0], B: [1,3,2,2,1,0,0], C: [0,1,3,2,2,1,0], D: [0,0,1,1,2,3,2] },
-  q6: { A: [3,2,0,0,0,0,0], B: [0,2,3,3,1,0,0], C: [0,0,1,2,3,3,1], D: [0,0,0,1,2,3,3] },
+  q1: { A: [3,1,0], B: [2,3,0], C: [1,2,3], D: [0,1,3] },
+  q2: { A: [1,3,1], B: [0,2,3], C: [1,3,2], D: [0,1,3] },
+  q3: { A: [3,1,0], B: [1,3,1], C: [1,3,1], D: [2,2,1] },
 };
 
-const MAX_SCORE = 18;
-const ALSO_CONSIDER_THRESHOLD = 11;
+const MAX_SCORE = 9;
+const ALSO_CONSIDER_THRESHOLD = 4;
 
 function computeScores(answers: Answer[]): number[] {
   const totals = new Array(PRODUCTS.length).fill(0);
-  ["q1","q2","q3","q4","q5","q6"].forEach((key, i) => {
+  QUESTIONS.forEach((q, i) => {
     if (i >= answers.length) return;
-    SCORES[key][answers[i]].forEach((s, pi) => { totals[pi] += s; });
+    SCORES[q.id][answers[i]].forEach((s, pi) => { totals[pi] += s; });
   });
   return totals;
 }
@@ -259,7 +225,7 @@ export function QuizClient({ initialUser = null }: { initialUser?: InitialUser }
     : [];
   const matchPct = scores && winnerIdx >= 0 ? scalePrimary(scores[winnerIdx]) : 86;
   const personalizedReasons = winner ? getPersonalizedReasons(answers, winner.id) : [];
-  const narrative = step === 7 && answers.length === 6 ? buildNarrative(answers) : null;
+  const narrative = step === 7 && answers.length === QUESTIONS.length ? buildNarrative(answers) : null;
 
   const startedRef = useRef(false);
   const completedRef = useRef(false);
@@ -714,7 +680,7 @@ export function QuizClient({ initialUser = null }: { initialUser?: InitialUser }
  // ── Result page (Netflix style + Narrative Engine) ───────────────
   if (!winner || !scores || !narrative) return null;
 
-  const heroImage = PRODUCT_IMAGE[winner.id] ?? "/hadar.png";
+  const heroImage = PRODUCT_IMAGE[winner.id] ?? "/og-image.jpg";
   const ctaText = CTA_TEXT[winner.id] ?? "להתחיל עכשיו";
   const metaText = PRODUCT_META[winner.id] ?? "";
   const firstName = leadForm.name.trim().split(" ")[0];
@@ -1019,7 +985,7 @@ export function QuizClient({ initialUser = null }: { initialUser?: InitialUser }
         {/* 12. Social proof */}
         <div style={{ margin: "24px 16px 0", padding: "16px 0", borderTop: `1px solid ${C.border}`, display: "flex", alignItems: "center", gap: 10, ...fadeIn(1.4, resultReady) }}>
           <span style={{ color: C.gold, fontSize: 14, letterSpacing: 2 }}>★★★★★</span>
-          <span style={{ fontSize: 12, color: C.textMuted }}>94 בעלות עסקים כבר השתתפו</span>
+          <span style={{ fontSize: 12, color: C.textMuted }}>TODO: הוסף social proof אמיתי של הלקוח</span>
         </div>
 
         {/* 13. More like this */}
@@ -1035,7 +1001,7 @@ export function QuizClient({ initialUser = null }: { initialUser?: InitialUser }
                 return (
                   <button key={p.id} onClick={() => handleCTAClick(p.id, p.href)} style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 10, overflow: "hidden", cursor: "pointer", textAlign: "right" }}>
                     <div style={{ height: 120, overflow: "hidden" }}>
-                      <img src={PRODUCT_IMAGE[p.id] ?? "/hadar.png"} alt={p.name} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }} />
+                      <img src={PRODUCT_IMAGE[p.id] ?? "/og-image.jpg"} alt={p.name} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center top", display: "block" }} />
                     </div>
                     <div style={{ padding: "10px 10px 12px" }}>
                       <div style={{ fontSize: 11, color: C.gold, fontWeight: 700, marginBottom: 4 }}>התאמה {pMatch}%</div>

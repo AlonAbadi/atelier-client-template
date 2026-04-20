@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CLIENT } from "@/lib/client";
 
 export const metadata: Metadata = {
-  title: "תנאי מנוי הכוורת | הדר דנן",
+  title: `תנאי מנוי הכוורת | ${CLIENT.name}`,
 };
 
 export default function HiveTermsPage() {
@@ -40,7 +41,7 @@ export default function HiveTermsPage() {
             תנאי מנוי הכוורת
           </h1>
           <p className="text-sm" style={{ color: "#9E9990" }}>
-            הדר דנן בע״מ
+            {CLIENT.legal_name}
           </p>
         </div>
 
@@ -50,9 +51,9 @@ export default function HiveTermsPage() {
             1. מהו המנוי וכיצד הוא עובד
           </h2>
           <p className="leading-relaxed" style={{ color: "#9E9990" }}>
-            הכוורת היא קהילה חודשית בתשלום המופעלת על ידי הדר דנן בע״מ. המנוי מקנה גישה לתכנים
+            הכוורת היא קהילה חודשית בתשלום המופעלת על ידי {CLIENT.legal_name}. המנוי מקנה גישה לתכנים
             בלעדיים, מפגשי זום חודשיים, וקהילת WhatsApp פעילה. ישנם שני מסלולים: מסלול פתוח לכולם
-            (₪97/חודש) ומסלול מיוחד ללקוחות הדר (₪29/חודש).
+            (₪97/חודש) ומסלול מיוחד ללקוחות {CLIENT.name} (₪{CLIENT.products.hive.price_discounted}/חודש).
           </p>
         </section>
 
@@ -65,7 +66,7 @@ export default function HiveTermsPage() {
             <li className="flex gap-2">
               <span style={{ color: "#C9964A" }}>•</span>
               <span>
-                מפגש זום חודשי עם הדר דנן - שעה אחת בחודש לשאלות, אסטרטגיה, ותוכן
+                מפגש זום חודשי עם {CLIENT.name} - שעה אחת בחודש לשאלות, אסטרטגיה, ותוכן
               </span>
             </li>
             <li className="flex gap-2">
@@ -121,11 +122,11 @@ export default function HiveTermsPage() {
               <span>
                 לביטול יש לפנות ל:{" "}
                 <a
-                  href="mailto:hive@beegood.online"
+                  href={`mailto:${CLIENT.email.from_email}`}
                   className="underline hover:opacity-80"
                   style={{ color: "#C9964A" }}
                 >
-                  hive@beegood.online
+                  {CLIENT.email.from_email}
                 </a>{" "}
                 או ללחוץ &#39;בטל מנוי&#39; באזור האישי.
               </span>
@@ -154,7 +155,7 @@ export default function HiveTermsPage() {
             6. שינויים בתנאים
           </h2>
           <p className="leading-relaxed" style={{ color: "#9E9990" }}>
-            הדר דנן בע״מ שומרת לעצמה את הזכות לשנות את תנאי המנוי עם הודעה מוקדמת של 30 יום.
+            {CLIENT.legal_name} שומרת לעצמה את הזכות לשנות את תנאי המנוי עם הודעה מוקדמת של 30 יום.
             ההודעה תישלח לאימייל הרשום.
           </p>
         </section>
@@ -167,11 +168,11 @@ export default function HiveTermsPage() {
           <p className="leading-relaxed" style={{ color: "#9E9990" }}>
             לכל שאלה:{" "}
             <a
-              href="mailto:hive@beegood.online"
+              href={`mailto:${CLIENT.email.from_email}`}
               className="underline hover:opacity-80"
               style={{ color: "#C9964A" }}
             >
-              hive@beegood.online
+              {CLIENT.email.from_email}
             </a>
           </p>
         </section>
@@ -194,7 +195,7 @@ export default function HiveTermsPage() {
           </Link>
         </p>
         <p>
-          © {new Date().getFullYear()} הדר דנן בע״מ ·{" "}
+          © {new Date().getFullYear()} {CLIENT.legal_name} ·{" "}
           <Link href="/privacy" className="hover:text-[#EDE9E1] transition">
             מדיניות פרטיות
           </Link>

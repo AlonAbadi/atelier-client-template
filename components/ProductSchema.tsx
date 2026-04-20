@@ -4,7 +4,7 @@ const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? `https://${CLIENT.domain}`;
 
 const PROVIDER = {
   "@type": "Organization",
-  "name": "BeeGood",
+  "name": CLIENT.legal_name,
   "url": APP_URL,
 };
 

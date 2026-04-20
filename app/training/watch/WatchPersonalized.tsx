@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { getSessionUser } from "@/lib/quiz-session";
+import { CLIENT } from "@/lib/client";
 
 // ── Greeting inserted above h1 ────────────────────────────────
 export function WatchGreeting() {
@@ -179,7 +180,7 @@ export function WatchNextStep() {
               >
                 {[
                   "שובר את חסם המצלמה במהירות",
-                  "פידבק אישי מהדר על הסרטונים שלך",
+                  `פידבק אישי מ${CLIENT.name} על הסרטונים שלך`,
                   "קבוצת וואצאפ חיה - תמיכה מלאה",
                 ].map((b) => (
                   <li
