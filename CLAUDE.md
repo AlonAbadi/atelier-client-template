@@ -64,24 +64,46 @@ export const CLIENT = {
 
 ---
 
-## Design system — Santosha palette
+## Design system — Presets
 
-All pages use the Santosha dark palette. Colors come from `CLIENT.colors`.
+`CLIENT.design_preset` determines the entire visual identity. One field → all CSS variables swap.
 
-| Token | Default hex | Usage |
+| Preset | מצב | מתאים ל |
 |---|---|---|
-| `bg` | `#0D1018` | Page background |
-| `bg_dark` | `#080C14` | Darkest sections |
-| `card` | `#141820` | Card backgrounds |
-| `card_soft` | `#1D2430` | Softer card / input backgrounds |
-| `border` | `#2C323E` | Borders, dividers |
-| `accent` | `#C9964A` | Primary accent, CTAs |
-| `accent_light` | `#E8B94A` | High-emphasis highlights |
-| `accent_dark` | `#9E7C3A` | Gradient ends |
-| `fg` | `#EDE9E1` | Primary text |
-| `fg_muted` | `#9E9990` | Secondary / muted text |
+| `"dark_gold"` | רקע כהה + זהב | פרמיום, high-ticket, high-contrast |
+| `"warm_earth"` | off-white + טרקוטה | ווליבאינג, תזונה, יוגה, אורגני |
+| `"cool_slate"` | כהה + כחול-פלדה | עסקי, מנכ"לים, אסטרטגי, טכנולוגי |
+| `"rose_blush"` | קרם + ורוד עמוק | קואצ'ינג נשי, ליייפסטייל, ביוטי |
 
-**Font:** `Assistant` (Google Fonts) — the only font.
+**כיצד להשתמש ב-CSS tokens בקוד:**
+```tsx
+// ✅ נכון — משתנה גלובלי, משתנה עם ה-preset
+<div style={{ background: "var(--bg)", color: "var(--fg)" }}>
+<button className="btn-cta-gold">                    {/* accent gradient */}
+<div style={{ border: "1px solid var(--border)" }}>
+
+// ❌ שגוי — hardcode לא מגיב ל-preset
+<div style={{ background: "#0D1018" }}>
+```
+
+**טוקנים עיקריים:**
+| CSS Var | שימוש |
+|---|---|
+| `--bg` / `--bg-dark` | רקע דף / סקשן כהה |
+| `--card` / `--card-soft` | רקע כרטיסים |
+| `--border` | גבולות וקווי הפרדה |
+| `--gold` / `--gold-light` / `--gold-dark` | הטוקן "accent" של ה-preset |
+| `--grad-gold` | גרדיאנט — כפתורים, highlights |
+| `--fg` / `--fg-muted` | טקסט ראשי / משני |
+| `--btn-text` | צבע טקסט על כפתורי accent |
+| `--radius-card` / `--radius-btn` | border-radius לפי preset |
+
+**אופציונלי — דרוס צבע accent בלבד:**
+```ts
+color_overrides: { accent: "#FF6B35", accent_light: "#FF8C55", accent_dark: "#CC5528", btn_text: "#FFFFFF" }
+```
+
+**Font:** `Assistant` (Google Fonts) — הפונט היחיד.
 
 ---
 

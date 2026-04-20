@@ -8,6 +8,7 @@ import { MobileNavServer }     from "@/components/MobileNavServer";
 import { DesktopNavServer }    from "@/components/DesktopNavServer";
 import { LayoutShell }         from "@/components/LayoutShell";
 import { SchemaMarkup }        from "@/components/SchemaMarkup";
+import { ThemeProvider }       from "@/components/ThemeProvider";
 import { CLIENT }              from "@/lib/client";
 
 const assistant = Assistant({
@@ -65,8 +66,11 @@ export default function RootLayout({
       dir="rtl"
       className={`${assistant.variable} h-full`}
     >
-      {/* TODO: add preload link for client hero image once known */}
-      <body className="min-h-full flex flex-col font-assistant antialiased" style={{ background: "#101520", color: "#EDE9E1" }}>
+      <head>
+        <ThemeProvider />
+        {/* TODO: add preload link for client hero image once known */}
+      </head>
+      <body className="min-h-full flex flex-col font-assistant antialiased" style={{ background: "var(--bg)", color: "var(--fg)" }}>
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-L76SZ1SCS1" strategy="afterInteractive" />
         <Script id="gtag-init" strategy="afterInteractive">{`
           window.dataLayer = window.dataLayer || [];

@@ -23,20 +23,23 @@ export const CLIENT = {
     og_image:    "/og-image.jpg",      // 1200×630 px
   },
 
-  // ─── Colors ───────────────────────────────────────────────────────────────
-  // עיין ב-CLAUDE.md לתיאור של כל טוקן
-  colors: {
-    bg:           "#FFFFFF",
-    bg_dark:      "#F5F5F5",
-    card:         "#FAFAFA",
-    card_soft:    "#F0F0F0",
-    border:       "#E0E0E0",
-    accent:       "#000000",
-    accent_light: "#333333",
-    accent_dark:  "#000000",
-    fg:           "#111111",
-    fg_muted:     "#666666",
-  },
+  // ─── Design Preset ────────────────────────────────────────────────────────
+  // בחר preset שמתאים לאישיות המותג של הלקוח.
+  // כל preset מגדיר את כל ה-CSS tokens: צבעים, גרדיאנטים, border-radius.
+  //
+  //   "dark_gold"   — רקע כהה + זהב.  פרמיום, high-ticket, אוטוריטטיבי.
+  //   "warm_earth"  — off-white + טרקוטה.  ווליבאינג, תזונה, יוגה, אורגני.
+  //   "cool_slate"  — כהה + כחול-פלדה.  עסקי, מנכ"לים, טכנולוגי, אסטרטגי.
+  //   "rose_blush"  — קרם + ורוד עמוק.  קואצ'ינג נשי, ליייפסטייל, ביוטי.
+  //
+  // לאחר בחירה: הפעל npx tsc --noEmit לאימות.
+  design_preset: "dark_gold" as import("@/lib/design-presets").DesignPreset,
+
+  // אופציונלי: דרוס צבע אקסנט בלבד (שאר ה-preset נשמר)
+  // color_overrides: { accent: "#FF6B35", accent_light: "#FF8C55", accent_dark: "#CC5528", btn_text: "#FFFFFF" },
+  color_overrides: undefined as
+    | Partial<Pick<import("@/lib/design-presets").PresetTokens, "accent" | "accent_light" | "accent_dark" | "btn_text">>
+    | undefined,
 
   // ─── Hero ─────────────────────────────────────────────────────────────────
   hero: {
