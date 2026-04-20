@@ -884,12 +884,12 @@ function partnershipConfirmation(ctx: EmailTemplateContext): RenderedEmail {
   const firstName = ctx.name.split(" ")[0];
   const business  = String(ctx.business ?? "");
   return {
-    subject: `${firstName}, קיבלנו את הבקשה שלך - הדר תחזור אליך בקרוב`,
+    subject: `${firstName}, קיבלנו את הבקשה שלך - ${FROM_NAME} תחזור אליך בקרוב`,
     html: base(`
       <div class="header" style="background:#080808;border-bottom:2px solid rgba(201,168,76,0.4)">
         <div class="header-logo" style="color:#C9A84C">${FROM_NAME} · שותפות אסטרטגית</div>
         <h1 style="color:#ffffff">קיבלנו, <span style="color:#C9A84C">${firstName}</span> ✨</h1>
-        <p style="color:rgba(255,255,255,0.6)">הדר תקרא את זה אישית ותחזור אליך</p>
+        <p style="color:rgba(255,255,255,0.6)">${FROM_NAME} תקרא את זה אישית ותחזור אליך</p>
       </div>
       <div class="body">
         <p>שלום ${firstName},</p>
@@ -955,7 +955,7 @@ function hiveWelcome(ctx: EmailTemplateContext): RenderedEmail {
         </div>
         <div class="step-row">
           <div class="step-num">2</div>
-          <div class="step-text"><strong>המפגש החודשי הבא עם הדר:</strong> תאריך ופרטים יישלחו בנפרד</div>
+          <div class="step-text"><strong>המפגש החודשי הבא עם ${FROM_NAME}:</strong> תאריך ופרטים יישלחו בנפרד</div>
         </div>
         <div class="step-row">
           <div class="step-num">3</div>
@@ -991,7 +991,7 @@ function hiveDay7(ctx: EmailTemplateContext): RenderedEmail {
         <p>תוכן בלעדי חדש מחכה לך: <strong>[פרטים יתווספו בקרוב]</strong></p>
 
         <div class="highlight-box">
-          <p>🐝 זכור - המפגש החודשי עם הדר פתוח לכל חברי הכוורת</p>
+          <p>🐝 זכור - המפגש החודשי עם ${FROM_NAME} פתוח לכל חברי הכוורת</p>
         </div>
 
         <a class="cta" href="${APP_URL}/hive">לכוורת ←</a>

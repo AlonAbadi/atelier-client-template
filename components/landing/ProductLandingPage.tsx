@@ -437,7 +437,7 @@ function PriceCard({
       )}
 
       <div style={{ display: 'flex', flexDirection: 'column', gap: 9, marginBottom: 24, textAlign: 'right' }}>
-        {[`גישה מיידית ל${productName}`, 'תמיכה ישירה מהדר', 'ערבות - תוצאות או כסף חזרה'].map((item, i) => (
+        {[`גישה מיידית ל${productName}`, `תמיכה ישירה מ${CLIENT.name}`, 'ערבות - תוצאות או כסף חזרה'].map((item, i) => (
           <div key={i} style={{ display: 'flex', gap: 9, alignItems: 'center', fontSize: 14, color: FG }}>
             <span style={{ color: GREEN_TEXT, flexShrink: 0, fontSize: 16 }}>✓</span>
             {item}
@@ -759,17 +759,17 @@ export default function ProductLandingPage({
       <div className="lp-divider" />
       <div className="lp-section">
         <div className="lp-eyebrow">מי מלמד/ת</div>
-        <div className="hadar-box">
-          <div className="hadar-photo-wrap" style={{ width: 110, height: 110, borderRadius: '50%', overflow: 'hidden', border: 'none', background: 'transparent', flexShrink: 0 }}>
+        <div className="who-box">
+          <div className="who-photo-wrap" style={{ width: 110, height: 110, borderRadius: '50%', overflow: 'hidden', border: 'none', background: 'transparent', flexShrink: 0 }}>
             {whoPhotoSrc
               ? <img src={whoPhotoSrc} alt={whoName} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
               : <Image src={CLIENT.about.image} alt={CLIENT.name} width={220} height={220} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
             }
           </div>
           <div style={{ flex: 1 }}>
-            <div className="hadar-name">{whoName}</div>
-            <div className="hadar-role">{whoRole}</div>
-            <div className="hadar-text">{whoText}</div>
+            <div className="who-name">{whoName}</div>
+            <div className="who-role">{whoRole}</div>
+            <div className="who-text">{whoText}</div>
           </div>
         </div>
       </div>
