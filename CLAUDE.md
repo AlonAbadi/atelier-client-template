@@ -6,7 +6,7 @@ A production-ready Next.js template for Hebrew influencer/coach marketing sites.
 Fork this repo for each new client — then edit **only `lib/client.ts`**.
 Everything else (nav, meta, emails, schema, payments) reads from that single file.
 
-**Template repo:** https://github.com/AlonAbadi/beegood-template
+**Template repo:** https://github.com/AlonAbadi/atelier-client-template
 
 **Before starting any work on a new client deployment, read `client-brief.md`** — it contains all the client-specific content (copy, products, philosophy, testimonials) you will need.
 
@@ -116,7 +116,7 @@ Run in Supabase SQL Editor in order. Next migration: **025**.
 | # | File | Contents |
 |---|---|---|
 | 001 | `schema.sql` | Core tables |
-| 002–023 | See hadar-danan reference | All features |
+| 002–023 | Included in `schema.sql` (cumulative) | All features |
 | 024 | `024_deals.sql` | Deals / coupon management |
 
 ---

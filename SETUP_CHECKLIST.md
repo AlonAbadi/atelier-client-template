@@ -16,7 +16,7 @@ Work through this in order. Do not skip steps.
 
 ## Phase 2 — Fork and configure
 
-- [ ] Fork `beegood-template` on GitHub → name it `client-slug`
+- [ ] Fork `atelier-client-template` on GitHub → name it `client-slug`
 - [ ] Clone locally
 - [ ] Edit `lib/client.ts` — fill every field from `client-brief.md`
 - [ ] Place images in `public/` (og-image.jpg, hero.jpg, about.jpg, etc.)
@@ -65,7 +65,7 @@ npx tsc --noEmit 2>&1 | grep "error TS"
 grep -r "TODO" app/ components/landing/ lib/quiz-narrative.ts lib/quiz-config.ts --include="*.tsx" --include="*.ts" -l
 
 # Find any remaining old-client names (replace CLIENT_SLUG with the old client)
-grep -r "הדר\|hadar\|beegood_logo\|TrueSignal\|atelier" app/ components/ lib/ --include="*.tsx" --include="*.ts" -l
+grep -r "beegood_logo\|TrueSignal\|TODO" app/ components/ lib/ --include="*.tsx" --include="*.ts" -l
 ```
 
 All three must return clean output before going live.
