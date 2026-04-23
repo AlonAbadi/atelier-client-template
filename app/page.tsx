@@ -27,7 +27,6 @@ async function getUserCount(): Promise<number> {
   }
 }
 
-// TODO: replace with real client testimonials
 const TESTIMONIALS: { text: string; name: string; date: string; initial: string }[] = [];
 
 const BG      = CLIENT.colors.bg;
@@ -45,7 +44,6 @@ export default async function LandingPage() {
   const variant = parseVariant(cookieStore.get("ab_variant")?.value);
   const content = AB_CONTENT[variant];
   const userCount = await getUserCount();
-  // TODO: adjust baseline offset to match client's real audience size
   const displayCount = Math.max(userCount + 100, 500);
 
   return (
@@ -187,11 +185,9 @@ export default async function LandingPage() {
           >
             <div className="max-w-5xl mx-auto flex flex-col gap-14">
               <div className="text-center flex flex-col gap-3">
-                {/* TODO: replace heading with client's approach/philosophy title */}
                 <h2 className="text-3xl md:text-4xl font-black" style={{ color: FG }}>
-                  הגישה שלנו
+                  {CLIENT.about.title}
                 </h2>
-                {/* TODO: replace tagline with client's philosophy tagline */}
                 <p className="text-base font-semibold" style={{ color: ACC }}>
                   {CLIENT.about.tagline}
                 </p>
@@ -199,13 +195,12 @@ export default async function LandingPage() {
 
               <PhilosophySection />
 
-              {/* TODO: replace with client's signature quote */}
               <div
                 className="rounded-3xl px-8 py-7 text-center"
                 style={{ background: `${ACC}14`, border: `1px solid ${ACC}1f` }}
               >
                 <p className="text-base md:text-lg leading-relaxed font-medium" style={{ color: FG }}>
-                  &ldquo;TODO: ציטוט מייצג של הגישה של הלקוח.&rdquo;
+                  &ldquo;{CLIENT.about.body}&rdquo;
                 </p>
               </div>
             </div>
@@ -224,7 +219,6 @@ export default async function LandingPage() {
 
               <div className="text-center flex flex-col items-center gap-5">
                 <h2 className="text-3xl md:text-5xl font-black leading-tight" style={{ color: FG }}>
-                  {/* TODO: replace with real social proof headline */}
                   מעל {displayCount.toLocaleString("he-IL")} {CLIENT.social_proof.tagline}
                 </h2>
               </div>

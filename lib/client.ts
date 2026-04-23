@@ -41,6 +41,27 @@ export const CLIENT = {
     | Partial<Pick<import("@/lib/design-presets").PresetTokens, "accent" | "accent_light" | "accent_dark" | "btn_text">>
     | undefined,
 
+  // ─── Colors ───────────────────────────────────────────────────────────────
+  // ערכי ברירת-מחדל תואמים לפרסט dark_gold.
+  // generate-client מחליף בלוק זה אוטומטית בהתאם ל-design_preset שנבחר.
+  //
+  // הבדל מ-design_preset:
+  //   • design_preset   → מגדיר CSS variables דרך ThemeProvider (סטיילינג גלובלי).
+  //   • colors          → ערכים inline לשימוש ב-JS בתוך קומפוננטות (style={{ ... }}).
+  // שניהם חייבים להישאר מסונכרנים — שינוי בpreset = עדכון colors בהתאם.
+  colors: {
+    bg:           "#0D1018",
+    bg_dark:      "#080C14",
+    card:         "#141820",
+    card_soft:    "#1D2430",
+    border:       "#2C323E",
+    accent:       "#C9964A",
+    accent_light: "#E8B94A",
+    accent_dark:  "#9E7C3A",
+    fg:           "#EDE9E1",
+    fg_muted:     "#9E9990",
+  },
+
   // ─── Hero ─────────────────────────────────────────────────────────────────
   hero: {
     image:       "/hero.jpg",          // תמונת hero ראשית
@@ -139,6 +160,14 @@ export const CLIENT = {
     from_name:  "שם הלקוח",
     from_email: "noreply@example.com",
     signature:  "שם הלקוח · ישראל",
+  },
+
+  // ─── Analytics (optional — leave empty to disable) ──────────────────────
+  // שדות אלה הם תיעוד בלבד — משתני הסביבה הם המקור האמיתי.
+  // הבלוק עוזר לאדמין לדעת אילו מזהים להגדיר ב-Vercel.
+  analytics: {
+    meta_pixel_id:     "",   // NEXT_PUBLIC_META_PIXEL_ID — copy here for reference
+    ga_measurement_id: "",   // NEXT_PUBLIC_GA_MEASUREMENT_ID — copy here for reference
   },
 
   // ─── Modules — הפעלה/כיבוי פיצ׳רים ──────────────────────────────────────

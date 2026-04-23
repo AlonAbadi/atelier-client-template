@@ -13,6 +13,11 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  // ── Preview mode guard ──────────────────────────────────
+  if (process.env.PREVIEW_MODE === "true") {
+    return NextResponse.json({ ok: true, user_id: "preview-user" }, { status: 201 });
+  }
+
   // ── Parse & validate ────────────────────────────────────
   let body: unknown;
   try {

@@ -152,6 +152,11 @@ MEMBERS_SECRET=
 # WhatsApp
 WHATSAPP_PHONE=                  # from CLIENT.whatsapp
 NEXT_PUBLIC_WHATSAPP_PHONE=      # from CLIENT.whatsapp
+
+# Analytics (optional)
+NEXT_PUBLIC_META_PIXEL_ID=       # Meta Pixel ID — leave empty to disable
+META_CAPI_TOKEN=                  # Meta Conversions API token (server-side only)
+NEXT_PUBLIC_GA_MEASUREMENT_ID=   # Google Analytics 4 measurement ID
 ```
 
 ---

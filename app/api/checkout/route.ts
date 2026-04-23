@@ -49,7 +49,7 @@ const BodySchema = z.object({
 
 export async function POST(req: NextRequest) {
   if (process.env.PREVIEW_MODE === "true") {
-    return NextResponse.json({ preview: true, url: null });
+    return NextResponse.json({ error: "Preview mode" }, { status: 503 });
   }
 
   const terminal = process.env.CARDCOM_TERMINAL;
