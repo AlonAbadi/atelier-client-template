@@ -67,7 +67,7 @@ export default async function LandingPage() {
                 fill
                 priority
                 sizes="100vw"
-                style={{ objectFit: "cover", objectPosition: "center 10%" }}
+                style={{ objectFit: "cover", objectPosition: CLIENT.hero.image_position ?? "center 25%" }}
               />
               <div style={{
                 position: "absolute", inset: 0,
@@ -75,11 +75,7 @@ export default async function LandingPage() {
               }} />
               <div style={{
                 position: "absolute", inset: 0,
-                background: `linear-gradient(to bottom, ${BG}66 0%, transparent 30%)`,
-              }} />
-              <div style={{
-                position: "absolute", inset: 0,
-                background: `linear-gradient(to right, ${BG_DARK} 0%, ${BG_DARK}99 25%, transparent 55%)`,
+                background: `linear-gradient(to bottom, ${BG}33 0%, transparent 25%)`,
               }} />
               <div style={{
                 position: "absolute", bottom: "32px", left: 0, right: 0,

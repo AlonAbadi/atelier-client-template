@@ -64,8 +64,9 @@ export const CLIENT = {
 
   // ─── Hero ─────────────────────────────────────────────────────────────────
   hero: {
-    image:       "/hero.jpg",          // תמונת hero ראשית
-    image_alt:   "שם הלקוח",
+    image:          "/hero.jpg",          // תמונת hero ראשית
+    image_alt:      "שם הלקוח",
+    image_position: "center 25%",        // CSS objectPosition — adjust to frame the face
     headline_a:  "כותרת ראשית — גרסה A",
     headline_b:  "כותרת ראשית — גרסה B",
     desc_a:      "תיאור קצר מתחת לכותרת — גרסה A.",

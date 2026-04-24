@@ -100,7 +100,7 @@ export function AccessibilityWidget() {
           left: "0",
           width: "48px",
           height: "48px",
-          background: "rgba(201,150,74,0.15)",
+          background: "rgba(var(--gold-rgb), 0.15)",
           borderRadius: "0 14px 14px 0",
           border: "none",
           display: "flex",
@@ -113,10 +113,10 @@ export function AccessibilityWidget() {
         }}
       >
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
-          <circle cx="12" cy="12" r="11" stroke="#C9964A" strokeWidth="1.5" />
-          <circle cx="12" cy="6.5" r="1.5" fill="#C9964A" />
-          <path d="M9 10h6M12 10v4.5l2.5 3" stroke="#C9964A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M9.5 14.5A3 3 0 1 0 14 17" stroke="#C9964A" strokeWidth="1.5" strokeLinecap="round" />
+          <circle cx="12" cy="12" r="11" stroke="var(--gold)" strokeWidth="1.5" />
+          <circle cx="12" cy="6.5" r="1.5" fill="var(--gold)" />
+          <path d="M9 10h6M12 10v4.5l2.5 3" stroke="var(--gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M9.5 14.5A3 3 0 1 0 14 17" stroke="var(--gold)" strokeWidth="1.5" strokeLinecap="round" />
         </svg>
       </button>
 
@@ -128,7 +128,7 @@ export function AccessibilityWidget() {
           aria-label="הגדרות נגישות"
           aria-modal="false"
           className="fixed bottom-20 left-2 w-72 rounded-2xl shadow-2xl flex flex-col gap-3 p-4"
-          style={{ background: "#fff", border: "2px solid #C9964A", color: "#111827", zIndex: 9999 }}
+          style={{ background: "#fff", border: "2px solid var(--gold)", color: "#111827", zIndex: 9999 }}
         >
           {/* Header */}
           <div className="flex items-center justify-between">
@@ -153,7 +153,7 @@ export function AccessibilityWidget() {
                 disabled={prefs.fontSize === 0}
                 aria-label="הקטן טקסט"
                 className="w-8 h-8 rounded-lg border flex items-center justify-center font-bold text-sm disabled:opacity-30 hover:bg-amber-50 transition"
-                style={{ borderColor: "#C9964A", color: "#C9964A" }}
+                style={{ borderColor: "var(--gold)", color: "var(--gold)" }}
               >
                 א-
               </button>
@@ -169,7 +169,7 @@ export function AccessibilityWidget() {
                 disabled={prefs.fontSize === 2}
                 aria-label="הגדל טקסט"
                 className="w-8 h-8 rounded-lg border flex items-center justify-center font-bold text-sm disabled:opacity-30 hover:bg-amber-50 transition"
-                style={{ borderColor: "#C9964A", color: "#C9964A" }}
+                style={{ borderColor: "var(--gold)", color: "var(--gold)" }}
               >
                 א+
               </button>
@@ -199,8 +199,8 @@ export function AccessibilityWidget() {
                   aria-label={`${label} - ${active ? "פעיל" : "כבוי"}`}
                   className="relative w-11 h-6 rounded-full transition-colors flex-shrink-0 focus-visible:outline-2"
                   style={{
-                    background: active ? "#C9964A" : "#d1d5db",
-                    outlineColor: "#C9964A",
+                    background: active ? "var(--gold)" : "#d1d5db",
+                    outlineColor: "var(--gold)",
                   }}
                 >
                   <span
@@ -228,7 +228,7 @@ export function AccessibilityWidget() {
           <a
             href="/accessibility"
             className="text-center text-xs underline hover:opacity-70 transition"
-            style={{ color: "#C9964A" }}
+            style={{ color: "var(--gold)" }}
           >
             הצהרת נגישות
           </a>
