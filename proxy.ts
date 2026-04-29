@@ -6,6 +6,11 @@ const PROTECTED_PREFIXES = ["/account", "/course/content", "/challenge/content",
 // Auth routes that redirect to /account if already logged in
 const AUTH_ROUTES = ["/login", "/signup"];
 
+// Guard: skip Supabase entirely if env vars aren't set (common on first Vercel deploy)
+const SUPABASE_OK =
+  !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
+  !!process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
 const UNAUTHORIZED = new Response("Unauthorized", {
   status: 401,
   headers: { "WWW-Authenticate": 'Basic realm="Admin", charset="UTF-8"' },
@@ -40,7 +45,7 @@ function checkBasicAuth(request: NextRequest): boolean {
   return userOk && passOk;
 }
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname, searchParams } = request.nextUrl;
 
   // ── Basic Auth for /admin/* ──────────────────────────────────
@@ -48,30 +53,39 @@ export async function middleware(request: NextRequest) {
     if (!checkBasicAuth(request)) return UNAUTHORIZED;
   }
 
-  // ── Supabase session refresh ─────────────────────────────────
-  // `response` may be replaced inside setAll() to forward updated request
-  // cookies. All subsequent cookie writes go onto the final `response`.
   let response = NextResponse.next({ request });
+  let user: { id: string } | null = null;
 
-  const supabase = createMiddlewareClient({
-    getCookies() {
-      return request.cookies.getAll();
-    },
-    setCookies(cookiesToSet) {
-      cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value));
-      response = NextResponse.next({ request });
-      cookiesToSet.forEach(({ name, value, options }) =>
-        response.cookies.set(name, value, options as Parameters<typeof response.cookies.set>[2])
-      );
-    },
-  });
+  // ── Supabase session refresh ─────────────────────────────────
+  // Skip entirely if env vars aren't configured — prevents 500s on new deploys
+  // before Supabase is wired up.
+  if (SUPABASE_OK) {
+    try {
+      const supabase = createMiddlewareClient({
+        getCookies() {
+          return request.cookies.getAll();
+        },
+        setCookies(cookiesToSet) {
+          cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value));
+          response = NextResponse.next({ request });
+          cookiesToSet.forEach(({ name, value, options }) =>
+            response.cookies.set(name, value, options as Parameters<typeof response.cookies.set>[2])
+          );
+        },
+      });
 
-  // In preview deployments there are no real users — skip the network call.
-  const {
-    data: { user },
-  } = process.env.PREVIEW_MODE === "true"
-    ? { data: { user: null } }
-    : await supabase.auth.getUser();
+      // In preview deployments there are no real users — skip the network call.
+      const result =
+        process.env.PREVIEW_MODE === "true"
+          ? { data: { user: null } }
+          : await supabase.auth.getUser();
+
+      user = result.data.user;
+    } catch {
+      // Supabase unreachable (missing vars, network error, cold start) —
+      // treat as unauthenticated and let the request through.
+    }
+  }
 
   // ── Custom cookies (set on the final response) ───────────────
 

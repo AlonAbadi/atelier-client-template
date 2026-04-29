@@ -164,7 +164,8 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID=   # Google Analytics 4 measurement ID
 ## Deployment
 
 - Push to `main` → Vercel auto-deploys
-- Before committing: `npx tsc --noEmit 2>&1 | grep "error TS" | grep -v ".next"`
+- **Before every push:** `npm run check` — catches all 3 common launch bugs (see `.claude/rules.md`)
+- TypeScript only: `node_modules/.bin/tsc --noEmit` (use local binary, not npx)
 - External cron: cron-job.org → `GET /api/cron/jobs` every 5 min with `Authorization: Bearer <CRON_SECRET>`
 
 ---
@@ -180,5 +181,7 @@ NEXT_PUBLIC_GA_MEASUREMENT_ID=   # Google Analytics 4 measurement ID
 **Never:**
 - Hardcode client name, domain, legal name, company ID — use `CLIENT.*`
 - Introduce new fonts or color palettes
-- Skip TypeScript check before deploying
+- Skip `npm run check` before deploying
 - Commit `.env.local` or secrets
+- Use `middleware.ts` — always use `proxy.ts` with `export async function proxy` (Next.js 16)
+- Leave bare `[]` in `lib/client.ts` under `as const` — add explicit type casts (see `.claude/rules.md`)

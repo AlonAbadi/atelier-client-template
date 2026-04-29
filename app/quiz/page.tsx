@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { CLIENT } from "@/lib/client";
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
